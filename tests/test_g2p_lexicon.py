@@ -1,6 +1,6 @@
 """Từ điển ngoại lệ lexicon/{vùng}.tsv (đặc tả mục 3): tra trước luật, cách đọc ghi bằng âm tiết Việt.
 
-API cần có trong ``vietvoice.text.g2p``:
+API cần có trong ``parrot_tts.text.g2p``:
 - ``LEXICON_DIR``: thư mục chứa ``bac.tsv``, ``nam.tsv``; test trỏ sang thư mục tạm.
 - ``load_lexicon(dialect, directory=None) -> dict[str, tuple[str, ...]]``: từ (chữ thường, NFC) -> các âm tiết.
 - ``INVENTORY_VERSION``: số phiên bản bộ âm vị.
@@ -11,8 +11,8 @@ from pathlib import Path
 
 import pytest
 
-from vietvoice.text import g2p as g2p_module
-from vietvoice.text.g2p import DIALECTS, INVENTORY_VERSION, LEXICON_DIR, g2p, load_lexicon
+from parrot_tts.text import g2p as g2p_module
+from parrot_tts.text.g2p import DIALECTS, INVENTORY_VERSION, LEXICON_DIR, g2p, load_lexicon
 
 HEADER = "# từ<TAB>cách đọc<TAB>ghi chú\n"
 

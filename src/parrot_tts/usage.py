@@ -8,7 +8,7 @@ nhất; tổng cộng dồn giữ mãi.
     u.add("fleurs")
     u.stats()  # {"updated": ..., "days": 7, "voices": {"fleurs": {"week": 1, "prev": 0, "total": 1}}}
 
-Dùng chung cho `vietvoice serve` (vietvoice.server), infra/vast/tts_server.py và web/scripts/tts-stub.py
+Dùng chung cho `parrot-tts serve` (parrot_tts.server), infra/vast/tts_server.py và web/scripts/tts-stub.py
 (hai file sau nạp qua infra/vast/usage.py).
 """
 

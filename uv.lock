@@ -2,19 +2,19 @@ version = 1
 revision = 5
 requires-python = ">=3.12"
 resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version >= '3.13' and extra == 'extra-9-vietvoice-tts' and extra != 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.13' and extra == 'extra-9-vietvoice-tts' and extra != 'group-9-vietvoice-viz'",
-    "extra != 'extra-9-vietvoice-tts' and extra != 'group-9-vietvoice-viz'",
+    "python_full_version >= '3.14' and sys_platform == 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version >= '3.13' and extra == 'extra-10-parrot-tts-tts' and extra != 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.13' and extra == 'extra-10-parrot-tts-tts' and extra != 'group-10-parrot-tts-viz'",
+    "extra != 'extra-10-parrot-tts-tts' and extra != 'group-10-parrot-tts-viz'",
 ]
 conflicts = [[
-    { package = "vietvoice", extra = "tts" },
-    { package = "vietvoice", group = "viz" },
+    { package = "parrot-tts", extra = "tts" },
+    { package = "parrot-tts", group = "viz" },
 ]]
 
 [[package]]
@@ -564,7 +564,7 @@ resolution-markers = [
     "python_full_version < '3.13'",
 ]
 dependencies = [
-    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-9-vietvoice-tts'" },
+    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-10-parrot-tts-tts'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/58/01/1253e6698a07380cd31a736d248a3f2a50a7c88779a1813da27503cadc2a/contourpy-1.3.3.tar.gz", hash = "sha256:083e12155b210502d0bca491432bb04d56dc3432f95a979b429f2848c3dbe880", size = 13466174, upload-time = "2025-07-26T12:03:12.549Z" }
 wheels = [
@@ -638,7 +638,7 @@ resolution-markers = [
     "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-9-vietvoice-viz'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-10-parrot-tts-viz'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/83/5a/a55177dd22553a277388e8a1b3220e92de91bacb28356cdc73caa240121d/contourpy-1.4.0.tar.gz", hash = "sha256:20156f5a1ac4f8ce02656e39a61e82164a3d359796dc8026f75b062783d500e1", size = 13323726, upload-time = "2026-09-11T19:05:05.808Z" }
 wheels = [
@@ -972,7 +972,7 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
     { name = "filelock" },
-    { name = "requests", extra = ["socks"], marker = "extra == 'extra-9-vietvoice-tts'" },
+    { name = "requests", extra = ["socks"], marker = "extra == 'extra-10-parrot-tts-tts'" },
     { name = "tqdm" },
     { name = "urllib3" },
 ]
@@ -1389,7 +1389,7 @@ name = "lightning"
 version = "2.2.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "fsspec", extra = ["http"], marker = "extra == 'extra-9-vietvoice-tts'" },
+    { name = "fsspec", extra = ["http"], marker = "extra == 'extra-10-parrot-tts-tts'" },
     { name = "lightning-utilities" },
     { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" } },
     { name = "packaging", version = "24.2", source = { registry = "https://pypi.org/simple" } },
@@ -1596,15 +1596,15 @@ name = "matplotlib"
 version = "3.11.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "contourpy", version = "1.3.3", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-9-vietvoice-tts'" },
-    { name = "contourpy", version = "1.4.0", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-9-vietvoice-viz'" },
+    { name = "contourpy", version = "1.3.3", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-10-parrot-tts-tts'" },
+    { name = "contourpy", version = "1.4.0", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-10-parrot-tts-viz'" },
     { name = "cycler" },
     { name = "fonttools" },
     { name = "kiwisolver" },
-    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-9-vietvoice-tts'" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-9-vietvoice-viz'" },
-    { name = "packaging", version = "24.2", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-9-vietvoice-tts'" },
-    { name = "packaging", version = "26.3", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-9-vietvoice-viz'" },
+    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-10-parrot-tts-tts'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-10-parrot-tts-viz'" },
+    { name = "packaging", version = "24.2", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-10-parrot-tts-tts'" },
+    { name = "packaging", version = "26.3", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-10-parrot-tts-viz'" },
     { name = "pillow" },
     { name = "pyparsing" },
     { name = "python-dateutil" },
@@ -2014,13 +2014,13 @@ name = "numpy"
 version = "2.5.5"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "extra != 'extra-9-vietvoice-tts' and extra != 'group-9-vietvoice-viz'",
+    "python_full_version >= '3.14' and sys_platform == 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "extra != 'extra-10-parrot-tts-tts' and extra != 'group-10-parrot-tts-viz'",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/4e/3a/8770c288c47f0b5c2a786d3c20e79f66fd245f2d42cd232d7cd5e00e83e5/numpy-2.5.5.tar.gz", hash = "sha256:5cddc243c75114ba845f01b1f87aca1572dbf7b6c2d88636ed3e1d2bccd7f1bf", size = 20873892, upload-time = "2026-11-15T21:32:28.607Z" }
 wheels = [
@@ -2276,13 +2276,13 @@ name = "packaging"
 version = "26.3"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "extra != 'extra-9-vietvoice-tts' and extra != 'group-9-vietvoice-viz'",
+    "python_full_version >= '3.14' and sys_platform == 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "extra != 'extra-10-parrot-tts-tts' and extra != 'group-10-parrot-tts-viz'",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7d/fa/3944b40b07da9ce895c0e6303a5ab7d53da063554f534556b134a54d6093/packaging-26.3.tar.gz", hash = "sha256:94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79", size = 313412, upload-time = "2026-08-04T18:15:28.737Z" }
 wheels = [
@@ -2349,6 +2349,112 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/4b/1a/01d622913e6a65d447eb9a42d1ed71d2a50c4244de24091128aaab023875/pandas-3.1.1-cp315-cp315t-musllinux_1_2_x86_64.whl", hash = "sha256:daf86c882e376ae2a8a459b2f769258d2b6d75e09f6327440cf6eb8d425c5ceb", size = 12913291, upload-time = "2026-11-04T15:07:54.651Z" },
     { url = "https://files.pythonhosted.org/packages/69/73/76b46776b10c6ff7c2037e3748eeb713df8391a34b7768efa81a08c2a77a/pandas-3.1.1-cp315-cp315t-win_amd64.whl", hash = "sha256:f89fb8e88cc5791995cc076c526eac605adc157b6ac6cc619a33ddd0b8bf5871", size = 11273592, upload-time = "2026-11-04T15:07:57.141Z" },
     { url = "https://files.pythonhosted.org/packages/08/ab/cce173d73200410f06306a89dbbb5f2125bd64f66ca5eff393d53d813288/pandas-3.1.1-cp315-cp315t-win_arm64.whl", hash = "sha256:4e6f9a3036fc6a40c5ba00efe4092a45844212bdb6a63eda4ad5a5a4c8da45eb", size = 10604158, upload-time = "2026-11-04T15:07:59.733Z" },
+]
+
+[[package]]
+name = "parrot-tts"
+version = "0.1.0"
+source = { editable = "." }
+default-groups = ["dev", "viz"]
+dependencies = [
+    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-10-parrot-tts-tts'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-10-parrot-tts-tts' or extra == 'group-10-parrot-tts-viz'" },
+    { name = "pydantic" },
+    { name = "pyloudnorm" },
+    { name = "pyyaml" },
+    { name = "soundfile" },
+]
+
+[package.optional-dependencies]
+tts = [
+    { name = "conformer" },
+    { name = "diffusers" },
+    { name = "gdown" },
+    { name = "huggingface-hub", extra = ["hf-xet"], marker = "extra == 'extra-10-parrot-tts-tts'" },
+    { name = "hydra-core" },
+    { name = "hyperpyyaml" },
+    { name = "inflect" },
+    { name = "librosa" },
+    { name = "lightning" },
+    { name = "matplotlib" },
+    { name = "modelscope" },
+    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" } },
+    { name = "omegaconf" },
+    { name = "onnxruntime" },
+    { name = "openai-whisper" },
+    { name = "pyarrow" },
+    { name = "pyworld" },
+    { name = "rich" },
+    { name = "setuptools" },
+    { name = "torch" },
+    { name = "torchaudio" },
+    { name = "tqdm" },
+    { name = "transformers" },
+    { name = "wget" },
+    { name = "x-transformers" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "hypothesis" },
+    { name = "pyright" },
+    { name = "pytest" },
+    { name = "ruff" },
+    { name = "types-pyyaml" },
+]
+viz = [
+    { name = "matplotlib" },
+    { name = "pandas" },
+    { name = "seaborn" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "conformer", marker = "extra == 'tts'", specifier = "==0.3.2" },
+    { name = "diffusers", marker = "extra == 'tts'", specifier = "==0.29.0" },
+    { name = "gdown", marker = "extra == 'tts'", specifier = ">=5.1.0" },
+    { name = "huggingface-hub", extras = ["hf-xet"], marker = "extra == 'tts'", specifier = ">=0.34,<1.0" },
+    { name = "hydra-core", marker = "extra == 'tts'", specifier = "==1.3.2" },
+    { name = "hyperpyyaml", marker = "extra == 'tts'", specifier = "==1.2.3" },
+    { name = "inflect", marker = "extra == 'tts'", specifier = "==7.3.1" },
+    { name = "librosa", marker = "extra == 'tts'", specifier = "==0.10.2" },
+    { name = "lightning", marker = "extra == 'tts'", specifier = "==2.2.4" },
+    { name = "matplotlib", marker = "extra == 'tts'", specifier = ">=3.7.5" },
+    { name = "modelscope", marker = "extra == 'tts'", specifier = "==1.20.0" },
+    { name = "numpy", specifier = ">=1.26.4" },
+    { name = "numpy", marker = "extra == 'tts'", specifier = "<2" },
+    { name = "omegaconf", marker = "extra == 'tts'", specifier = "==2.3.0" },
+    { name = "onnxruntime", marker = "extra == 'tts'", specifier = "==1.18.0" },
+    { name = "openai-whisper", marker = "extra == 'tts'", specifier = ">=20240930" },
+    { name = "pyarrow", marker = "extra == 'tts'", specifier = "==18.1.0" },
+    { name = "pydantic", specifier = ">=2.14.3" },
+    { name = "pyloudnorm", specifier = ">=0.2.0" },
+    { name = "pyworld", marker = "extra == 'tts'", specifier = ">=0.3.4" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
+    { name = "rich", marker = "extra == 'tts'", specifier = ">=13.7.1" },
+    { name = "setuptools", marker = "extra == 'tts'", specifier = "<70" },
+    { name = "soundfile", specifier = ">=0.14.0" },
+    { name = "torch", marker = "extra == 'tts'", specifier = "==2.3.1" },
+    { name = "torchaudio", marker = "extra == 'tts'", specifier = "==2.3.1" },
+    { name = "tqdm", marker = "extra == 'tts'" },
+    { name = "transformers", marker = "extra == 'tts'", specifier = "==4.51.3" },
+    { name = "wget", marker = "extra == 'tts'", specifier = "==3.2" },
+    { name = "x-transformers", marker = "extra == 'tts'", specifier = "==2.11.24" },
+]
+provides-extras = ["tts"]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "hypothesis", specifier = ">=6.170.15" },
+    { name = "pyright", specifier = ">=1.1.414" },
+    { name = "pytest", specifier = ">=9.2.0" },
+    { name = "ruff", specifier = ">=0.17.5" },
+    { name = "types-pyyaml", specifier = ">=6.0.12.20261113" },
+]
+viz = [
+    { name = "matplotlib", specifier = ">=3.11.2" },
+    { name = "pandas", specifier = ">=3.1.1" },
+    { name = "seaborn", specifier = ">=0.13.2" },
 ]
 
 [[package]]
@@ -2760,10 +2866,10 @@ name = "pyloudnorm"
 version = "0.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-9-vietvoice-tts'" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-9-vietvoice-tts' or extra == 'group-9-vietvoice-viz'" },
-    { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-9-vietvoice-tts'" },
-    { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-9-vietvoice-tts' or extra == 'group-9-vietvoice-viz'" },
+    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-10-parrot-tts-tts'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-10-parrot-tts-tts' or extra == 'group-10-parrot-tts-viz'" },
+    { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-10-parrot-tts-tts'" },
+    { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-10-parrot-tts-tts' or extra == 'group-10-parrot-tts-viz'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/23/00/f915eaa75326f4209941179c2b93ac477f2040e4aeff5bb21d16eb8058f9/pyloudnorm-0.2.0.tar.gz", hash = "sha256:8bf597658ea4e1975c275adf490f6deb5369ea409f2901f939915efa4b681b16", size = 14037, upload-time = "2026-01-04T11:43:35.265Z" }
 wheels = [
@@ -2817,8 +2923,8 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "colorama", marker = "sys_platform == 'win32'" },
     { name = "iniconfig" },
-    { name = "packaging", version = "24.2", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-9-vietvoice-tts'" },
-    { name = "packaging", version = "26.3", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-9-vietvoice-tts' or extra == 'group-9-vietvoice-viz'" },
+    { name = "packaging", version = "24.2", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-10-parrot-tts-tts'" },
+    { name = "packaging", version = "26.3", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-10-parrot-tts-tts' or extra == 'group-10-parrot-tts-viz'" },
     { name = "pluggy" },
     { name = "pygments" },
 ]
@@ -2844,7 +2950,7 @@ name = "pytorch-lightning"
 version = "2.6.6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "fsspec", extra = ["http"], marker = "extra == 'extra-9-vietvoice-tts'" },
+    { name = "fsspec", extra = ["http"], marker = "extra == 'extra-10-parrot-tts-tts'" },
     { name = "lightning-utilities" },
     { name = "packaging", version = "24.2", source = { registry = "https://pypi.org/simple" } },
     { name = "pyyaml" },
@@ -3213,7 +3319,7 @@ resolution-markers = [
     "python_full_version < '3.13'",
 ]
 dependencies = [
-    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-9-vietvoice-tts'" },
+    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-10-parrot-tts-tts'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7a/97/5a3609c4f8d58b039179648e62dd220f89864f56f7357f5d4f45c29eb2cc/scipy-1.17.1.tar.gz", hash = "sha256:95d8e012d8cb8816c226aef832200b1d45109ed4464303e997c5b13122b297c0", size = 30573822, upload-time = "2026-02-23T00:26:24.851Z" }
 wheels = [
@@ -3274,16 +3380,16 @@ name = "scipy"
 version = "1.18.1"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-9-vietvoice-tts' and extra == 'group-9-vietvoice-viz'",
-    "extra != 'extra-9-vietvoice-tts' and extra != 'group-9-vietvoice-viz'",
+    "python_full_version >= '3.14' and sys_platform == 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-10-parrot-tts-tts' and extra == 'group-10-parrot-tts-viz'",
+    "extra != 'extra-10-parrot-tts-tts' and extra != 'group-10-parrot-tts-viz'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-9-vietvoice-tts' or extra == 'group-9-vietvoice-viz'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-10-parrot-tts-tts' or extra == 'group-10-parrot-tts-viz'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7e/74/66de6258867beb2ef08f35f9f2ac017a52cacd5081714d239ff1a442d458/scipy-1.18.1.tar.gz", hash = "sha256:52c4b7422442aba924d03ad4019852b08a92e64ea187b933135687bfe2747307", size = 30781235, upload-time = "2026-08-21T23:28:50.599Z" }
 wheels = [
@@ -3387,8 +3493,8 @@ version = "0.14.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cffi" },
-    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-9-vietvoice-tts'" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-9-vietvoice-tts' or extra == 'group-9-vietvoice-viz'" },
+    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-10-parrot-tts-tts'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-10-parrot-tts-tts' or extra == 'group-10-parrot-tts-viz'" },
     { name = "typing-extensions" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d2/db/949331952a6fb1c5b12e9de80fd08747966c2039d1a61db4764fbd3981c2/soundfile-0.14.0.tar.gz", hash = "sha256:ba1c1a2d618bca5c406647c83b89f07cc8810fa506a50622a6993ba130c1de11", size = 47842, upload-time = "2026-06-06T08:58:47.869Z" }
@@ -3742,112 +3848,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e3/05/b17359e1cefb4f909b5e40b1b90a496d987258916dbbf88e842c729f510e/urllib3-2.8.0.tar.gz", hash = "sha256:63bf2ead4c879426ebf22ef2a781eeb4aa3b4ae798a0435506f8687fd5bb9b63", size = 458972, upload-time = "2026-09-15T19:29:36.253Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl", hash = "sha256:0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3", size = 135717, upload-time = "2026-09-15T19:29:34.577Z" },
-]
-
-[[package]]
-name = "vietvoice"
-version = "0.1.0"
-source = { editable = "." }
-default-groups = ["dev", "viz"]
-dependencies = [
-    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-9-vietvoice-tts'" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'extra-9-vietvoice-tts' or extra == 'group-9-vietvoice-viz'" },
-    { name = "pydantic" },
-    { name = "pyloudnorm" },
-    { name = "pyyaml" },
-    { name = "soundfile" },
-]
-
-[package.optional-dependencies]
-tts = [
-    { name = "conformer" },
-    { name = "diffusers" },
-    { name = "gdown" },
-    { name = "huggingface-hub", extra = ["hf-xet"], marker = "extra == 'extra-9-vietvoice-tts'" },
-    { name = "hydra-core" },
-    { name = "hyperpyyaml" },
-    { name = "inflect" },
-    { name = "librosa" },
-    { name = "lightning" },
-    { name = "matplotlib" },
-    { name = "modelscope" },
-    { name = "numpy", version = "1.26.4", source = { registry = "https://pypi.org/simple" } },
-    { name = "omegaconf" },
-    { name = "onnxruntime" },
-    { name = "openai-whisper" },
-    { name = "pyarrow" },
-    { name = "pyworld" },
-    { name = "rich" },
-    { name = "setuptools" },
-    { name = "torch" },
-    { name = "torchaudio" },
-    { name = "tqdm" },
-    { name = "transformers" },
-    { name = "wget" },
-    { name = "x-transformers" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "hypothesis" },
-    { name = "pyright" },
-    { name = "pytest" },
-    { name = "ruff" },
-    { name = "types-pyyaml" },
-]
-viz = [
-    { name = "matplotlib" },
-    { name = "pandas" },
-    { name = "seaborn" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "conformer", marker = "extra == 'tts'", specifier = "==0.3.2" },
-    { name = "diffusers", marker = "extra == 'tts'", specifier = "==0.29.0" },
-    { name = "gdown", marker = "extra == 'tts'", specifier = ">=5.1.0" },
-    { name = "huggingface-hub", extras = ["hf-xet"], marker = "extra == 'tts'", specifier = ">=0.34,<1.0" },
-    { name = "hydra-core", marker = "extra == 'tts'", specifier = "==1.3.2" },
-    { name = "hyperpyyaml", marker = "extra == 'tts'", specifier = "==1.2.3" },
-    { name = "inflect", marker = "extra == 'tts'", specifier = "==7.3.1" },
-    { name = "librosa", marker = "extra == 'tts'", specifier = "==0.10.2" },
-    { name = "lightning", marker = "extra == 'tts'", specifier = "==2.2.4" },
-    { name = "matplotlib", marker = "extra == 'tts'", specifier = ">=3.7.5" },
-    { name = "modelscope", marker = "extra == 'tts'", specifier = "==1.20.0" },
-    { name = "numpy", specifier = ">=1.26.4" },
-    { name = "numpy", marker = "extra == 'tts'", specifier = "<2" },
-    { name = "omegaconf", marker = "extra == 'tts'", specifier = "==2.3.0" },
-    { name = "onnxruntime", marker = "extra == 'tts'", specifier = "==1.18.0" },
-    { name = "openai-whisper", marker = "extra == 'tts'", specifier = ">=20240930" },
-    { name = "pyarrow", marker = "extra == 'tts'", specifier = "==18.1.0" },
-    { name = "pydantic", specifier = ">=2.14.3" },
-    { name = "pyloudnorm", specifier = ">=0.2.0" },
-    { name = "pyworld", marker = "extra == 'tts'", specifier = ">=0.3.4" },
-    { name = "pyyaml", specifier = ">=6.0.3" },
-    { name = "rich", marker = "extra == 'tts'", specifier = ">=13.7.1" },
-    { name = "setuptools", marker = "extra == 'tts'", specifier = "<70" },
-    { name = "soundfile", specifier = ">=0.14.0" },
-    { name = "torch", marker = "extra == 'tts'", specifier = "==2.3.1" },
-    { name = "torchaudio", marker = "extra == 'tts'", specifier = "==2.3.1" },
-    { name = "tqdm", marker = "extra == 'tts'" },
-    { name = "transformers", marker = "extra == 'tts'", specifier = "==4.51.3" },
-    { name = "wget", marker = "extra == 'tts'", specifier = "==3.2" },
-    { name = "x-transformers", marker = "extra == 'tts'", specifier = "==2.11.24" },
-]
-provides-extras = ["tts"]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "hypothesis", specifier = ">=6.170.15" },
-    { name = "pyright", specifier = ">=1.1.414" },
-    { name = "pytest", specifier = ">=9.2.0" },
-    { name = "ruff", specifier = ">=0.17.5" },
-    { name = "types-pyyaml", specifier = ">=6.0.12.20261113" },
-]
-viz = [
-    { name = "matplotlib", specifier = ">=3.11.2" },
-    { name = "pandas", specifier = ">=3.1.1" },
-    { name = "seaborn", specifier = ">=0.13.2" },
 ]
 
 [[package]]

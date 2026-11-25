@@ -1,6 +1,6 @@
 # corpus/
 
-Thư mục này chứa văn bản dùng để chấm giọng VietVoice: bộ câu test cố định (đặc tả mục 10).
+Thư mục này chứa văn bản dùng để chấm giọng Parrot-TTS: bộ câu test cố định (đặc tả mục 10).
 Kịch bản thu âm không nằm ở đây mà ở `data/scripts/{speaker_id}.tsv` (đặc tả mục 5).
 
 | File | Trạng thái | Nội dung |
@@ -14,7 +14,7 @@ Câu trong bộ test **không bao giờ** được đưa vào kịch bản thu �
 Script đo độ phủ của P3 phải kiểm tra điều này: không câu nào vừa ở bộ test vừa ở kịch bản thu.
 Khi viết kịch bản thu, đừng chép câu từ đây rồi sửa vài chữ.
 
-Mọi câu là văn bản tự viết cho VietVoice, không trích sách, báo, bài hát hay lời người thật.
+Mọi câu là văn bản tự viết cho Parrot-TTS, không trích sách, báo, bài hát hay lời người thật.
 
 ## Định dạng file
 

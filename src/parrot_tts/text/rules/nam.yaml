@@ -1,6 +1,6 @@
 # Luật G2P giọng Nam (Sài Gòn). Chủ dự án viết và duyệt file này.
 # Code (text/g2p.py) chỉ tách chữ viết thành âm đầu / vần / thanh; mọi cách đọc nằm ở đây.
-# Nguồn: doc "VietVoice – Đặc tả kỹ thuật TTS", mục 2 và mục 3.
+# Nguồn: doc "Parrot-TTS – Đặc tả kỹ thuật TTS", mục 2 và mục 3.
 # Dòng có "NHÁP" là Claude điền tạm, chờ chủ dự án duyệt.
 
 # Âm đầu: chữ viết -> âm vị. "" là âm tiết mở đầu bằng nguyên âm (sẽ có ʔ).

@@ -1,13 +1,13 @@
 """Bước 12: chia train/val/test = 94/3/3 theo người nói và văn phong, câu test không vào train.
 
-API: ``vietvoice.data.manifest.split_utterances(utterances, test_texts, config=None) -> SplitResult``.
+API: ``parrot_tts.data.manifest.split_utterances(utterances, test_texts, config=None) -> SplitResult``.
 """
 
 import itertools
 
 import pytest
 
-from vietvoice.data.manifest import Utterance, load_manifest_config, split_utterances
+from parrot_tts.data.manifest import Utterance, load_manifest_config, split_utterances
 
 SPEAKERS = ["hn_f01", "hn_m01", "sg_f01", "sg_m01"]
 STYLES = ["tin_tuc", "ke_chuyen", "quang_cao", "hoi_thoai"]
@@ -36,7 +36,7 @@ def _utt(speaker: str, n: int, text: str, style: str = "tin_tuc", **changes) -> 
         "qc_status": "pass",
         "split": "train",
         "consent_id": "CT-1",
-        "license": "vietvoice-commercial-v1",
+        "license": "parrot-tts-commercial-v1",
         "recorded_at": "2027-01-15",
     }
     row.update(changes)

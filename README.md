@@ -5,7 +5,7 @@ Vietnamese text-to-speech, made for Vietnamese speakers. It runs on your own com
 Parrot-TTS is [Fun-CosyVoice3-0.5B](https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512) with its text-reading stage (`llm.pt`) retrained for Vietnamese, plus a Vietnamese text normalizer (numbers, dates, abbreviations) and a ready-made voice pack.
 
 - Model and voices: [huggingface.co/rin98s/Parrot-TTS](https://huggingface.co/rin98s/Parrot-TTS)
-- Code: this repository. The Python package and command are still called `vietvoice`.
+- Code: this repository. The command is `parrot-tts` and the Python package is `parrot_tts`.
 
 ## Requirements
 
@@ -20,37 +20,37 @@ git clone https://github.com/RinNguyens/Parrot-TTS.git
 cd Parrot-TTS
 python3.12 -m venv .venv-tts && source .venv-tts/bin/activate
 pip install -e ".[tts]"
-vietvoice download
-vietvoice check
+parrot-tts download
+parrot-tts check
 ```
 
-`vietvoice download` fetches the CosyVoice code, the base model, the Parrot-TTS `llm.pt` and the voice pack into `~/.cache/vietvoice` (set `VIETVOICE_HOME` to use another folder). `vietvoice check` reports anything that is missing.
+`parrot-tts download` fetches the CosyVoice code, the base model, the Parrot-TTS `llm.pt` and the voice pack into `~/.cache/parrot-tts` (set `PARROT_TTS_HOME` to use another folder). `parrot-tts check` reports anything that is missing.
 
 ## Usage
 
 ```bash
-vietvoice voices
-vietvoice tts "Xin chào các bạn, hôm nay giảm 50% toàn bộ cửa hàng." --voice "Thanh Thanh" -o hello.wav
-cat article.txt | vietvoice tts - --voice "Thành" -o article.wav
+parrot-tts voices
+parrot-tts tts "Xin chào các bạn, hôm nay giảm 50% toàn bộ cửa hàng." --voice "Thanh Thanh" -o hello.wav
+cat article.txt | parrot-tts tts - --voice "Thành" -o article.wav
 ```
 
 In Python:
 
 ```python
-from vietvoice.tts import VietVoice, save
+from parrot_tts.tts import ParrotTTS, save
 
-tts = VietVoice()
+tts = ParrotTTS()
 audio, sr = tts.speak("Xin chào các bạn.", voice="Thanh Thanh")
 save("hello.wav", audio, sr)
 ```
 
 Voice names work with or without Vietnamese diacritics (`"Thanh Thanh"`, `thanh_thanh`).
 
-`vietvoice serve` starts a local HTTP reading server.
+`parrot-tts serve` starts a local HTTP reading server.
 
 ## Voices
 
-The voice pack downloaded by `vietvoice download` contains:
+The voice pack downloaded by `parrot-tts download` contains:
 
 | Voice | ID | Accent | Gender | Best for |
 | --- | --- | --- | --- | --- |
@@ -73,14 +73,14 @@ More voices, including Northern accents, are on the way.
 Record one 5–15 second sentence in a quiet room and write down exactly what you said:
 
 ```bash
-vietvoice tts "Văn bản cần đọc." --prompt-wav sample.wav --prompt-text "Exact words spoken in sample.wav" -o out.wav
+parrot-tts tts "Văn bản cần đọc." --prompt-wav sample.wav --prompt-text "Exact words spoken in sample.wav" -o out.wav
 ```
 
 Only use your own voice, or the voice of someone who has agreed to it. Do not use Parrot-TTS to imitate other people.
 
 ## AI-generated label
 
-WAV files written by `vietvoice` carry a note in their metadata saying the audio is an AI-generated synthetic voice. When you publish audio, say clearly that the voice is synthetic.
+WAV files written by `parrot-tts` carry a note in their metadata saying the audio is an AI-generated synthetic voice. When you publish audio, say clearly that the voice is synthetic.
 
 ## License
 

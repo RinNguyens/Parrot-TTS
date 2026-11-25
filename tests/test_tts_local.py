@@ -1,4 +1,4 @@
-"""Phần không cần GPU của gói chạy local (src/vietvoice/tts.py, __init__.py)."""
+"""Phần không cần GPU của gói chạy local (src/parrot_tts/tts.py, __init__.py)."""
 
 from __future__ import annotations
 
@@ -6,8 +6,8 @@ import json
 
 import pytest
 
-from vietvoice import main
-from vietvoice import tts as T
+from parrot_tts import main
+from parrot_tts import tts as T
 
 
 def test_tts_text_keeps_plain_sentence_and_normalizes_numbers():
@@ -28,7 +28,7 @@ def test_length_ok():
 
 
 def test_list_voices(tmp_path, monkeypatch, capsys):
-    monkeypatch.setenv("VIETVOICE_HOME", str(tmp_path))
+    monkeypatch.setenv("PARROT_TTS_HOME", str(tmp_path))
     d = tmp_path / "voices" / "ha_my"
     d.mkdir(parents=True)
     (d / "prompt.wav").write_bytes(b"")
@@ -62,11 +62,11 @@ def test_find_voice_by_id_label_and_without_diacritics():
 
 
 def test_check_reports_missing(tmp_path, monkeypatch, capsys):
-    monkeypatch.setenv("VIETVOICE_HOME", str(tmp_path))
+    monkeypatch.setenv("PARROT_TTS_HOME", str(tmp_path))
     with pytest.raises(SystemExit):
         main(["check"])
     out = capsys.readouterr().out
-    assert "THIẾU llm VietVoice" in out and "vietvoice download" in out
+    assert "THIẾU llm Parrot-TTS" in out and "parrot-tts download" in out
 
 
 def test_save_marks_ai(tmp_path):
@@ -87,8 +87,8 @@ def test_server_api_with_fake_model(tmp_path):
 
     np = pytest.importorskip("numpy")
     sf = pytest.importorskip("soundfile")
-    from vietvoice.server import make_handler
-    from vietvoice.usage import Usage
+    from parrot_tts.server import make_handler
+    from parrot_tts.usage import Usage
 
     class FakeVV:
         def speak(self, text, voice=None, dialect=None):
@@ -97,12 +97,12 @@ def test_server_api_with_fake_model(tmp_path):
 
     vv = FakeVV()
     voices = {"thanh": T.Voice("thanh", Path("x.wav"), "Chào.", region="nam", label="Thành", aliases=("san",))}
-    srv = ThreadingHTTPServer(("127.0.0.1", 0), make_handler(vv, voices, Usage(None), "VietVoice (llm.pt)"))
+    srv = ThreadingHTTPServer(("127.0.0.1", 0), make_handler(vv, voices, Usage(None), "Parrot-TTS (llm.pt)"))
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     base = f"http://127.0.0.1:{srv.server_address[1]}"
     try:
         got = json.loads(urllib.request.urlopen(base + "/voices").read())
-        assert got["voices"] == [{"id": "thanh", "label": "Thành", "source": "VietVoice", "aliases": ["san"]}]
+        assert got["voices"] == [{"id": "thanh", "label": "Thành", "source": "Parrot-TTS", "aliases": ["san"]}]
 
         def post(body):
             req = urllib.request.Request(base + "/tts", json.dumps(body).encode(), {"Content-Type": "application/json"})

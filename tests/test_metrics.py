@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from vietvoice.eval.metrics import (
+from parrot_tts.eval.metrics import (
     CheckpointScores,
     align_tones,
     cer,

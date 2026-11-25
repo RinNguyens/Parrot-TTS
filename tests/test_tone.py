@@ -4,14 +4,14 @@ Quy ước số thanh theo doc đặc tả, mục 3:
 T1 ngang, T2 huyền, T3 ngã, T4 hỏi, T5 sắc, T6 nặng,
 T7 sắc trong âm tiết tắc (-p -t -c -ch), T8 nặng trong âm tiết tắc.
 
-API cần có: ``vietvoice.text.g2p.syllable_tone(syllable: str) -> int``.
+API cần có: ``parrot_tts.text.g2p.syllable_tone(syllable: str) -> int``.
 """
 
 import unicodedata
 
 import pytest
 
-from vietvoice.text.g2p import syllable_tone
+from parrot_tts.text.g2p import syllable_tone
 
 
 @pytest.mark.parametrize(

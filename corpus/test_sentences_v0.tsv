@@ -1,4 +1,4 @@
-# VietVoice – bộ câu test v0 (BẢN NHÁP)
+# Parrot-TTS – bộ câu test v0 (BẢN NHÁP)
 # Trạng thái: NHÁP, chưa duyệt. Chủ dự án và người bản xứ (một người Bắc, một người Nam)
 # phải đọc to, sửa và duyệt từng câu trước khi khoá phiên bản và dùng để chấm checkpoint.
 # Bộ câu test giữ ngoài kịch bản thu âm và dữ liệu huấn luyện (đặc tả mục 10). Không chép câu
@@ -12,7 +12,7 @@
 #           cau_hoi_cam_than, doan_dai. Xem corpus/README.md.
 # text: văn bản gốc như người làm video sẽ gõ. Riêng so_va_tieng_anh có số, đơn vị, ký hiệu
 #       và từ tiếng Anh, phải qua bước chuẩn hoá (P1) trước G2P. Các loại khác chỉ dùng dấu , . ? !
-# Mọi câu là văn bản tự viết cho VietVoice, không trích sách, báo, bài hát.
+# Mọi câu là văn bản tự viết cho Parrot-TTS, không trích sách, báo, bài hát.
 v0_ctt_001	*	cap_toi_thieu	Tôi đọc chữ ma, má, mà, mả, mã, mạ.
 v0_ctt_002	*	cap_toi_thieu	Bây giờ tôi đọc chữ ba, bá, bà, bả, bã, bạ.
 v0_ctt_003	*	cap_toi_thieu	Em hãy nghe kỹ các chữ la, lá, là, lả, lã, lạ.

@@ -1,14 +1,14 @@
 """Đọc văn bản tiếng Việt bằng giọng mẫu, chạy trên máy người dùng (GPU NVIDIA; CPU chạy được nhưng chậm).
 
-Model = Fun-CosyVoice3-0.5B (Apache-2.0) với llm.pt của VietVoice thay cho llm gốc; flow, hift giữ nguyên.
+Model = Fun-CosyVoice3-0.5B (Apache-2.0) với llm.pt của Parrot-TTS thay cho llm gốc; flow, hift giữ nguyên.
 Cách đọc giống hệt lúc chấm điểm (infra/vast/eval_tts.py, chế độ --guard):
-  - chuẩn hoá văn bản (số, ngày, viết tắt -> chữ) bằng vietvoice.text.normalize;
+  - chuẩn hoá văn bản (số, ngày, viết tắt -> chữ) bằng parrot_tts.text.normalize;
   - tách đoạn ≤ 30 âm tiết theo câu và dấu phẩy;
   - mỗi đoạn đọc tối đa `tries` lần, lấy lần có độ dài hợp lý (0,5–2 lần độ dài dự kiến);
-  - câu mẫu được làm sạch trước (vietvoice.prompt) nếu có ASR.
+  - câu mẫu được làm sạch trước (parrot_tts.prompt) nếu có ASR.
 
-    from vietvoice.tts import VietVoice
-    vv = VietVoice()                      # tìm model ở $VIETVOICE_HOME (mặc định ~/.cache/vietvoice)
+    from parrot_tts.tts import ParrotTTS
+    vv = ParrotTTS()                      # tìm model ở $PARROT_TTS_HOME (mặc định ~/.cache/parrot-tts)
     audio, sr = vv.speak("Xin chào các bạn.", voice="Thanh Thanh")   # tên hiển thị hoặc mã thư mục (thanh_thanh)
 """
 
@@ -30,11 +30,11 @@ SEC_PER_SYL = 0.505  # trung vị tốc độ đọc đo trên model FLEURS
 RATIO_OK = (0.5, 2.0)
 MAX_SYL = 30
 GAP_S = 0.15
-AI_MARK = "Tạo bởi VietVoice (giọng tổng hợp bằng AI)"
+AI_MARK = "Tạo bởi Parrot-TTS (giọng tổng hợp bằng AI)"
 
 
 def home() -> Path:
-    return Path(os.environ.get("VIETVOICE_HOME", Path.home() / ".cache" / "vietvoice"))
+    return Path(os.environ.get("PARROT_TTS_HOME", Path.home() / ".cache" / "parrot-tts"))
 
 
 @dataclass
@@ -51,7 +51,7 @@ class Voice:
 
 
 def voices_dirs() -> list[Path]:
-    """Thư mục giọng: $VIETVOICE_HOME/voices, rồi voices/ đi kèm gói (nếu có)."""
+    """Thư mục giọng: $PARROT_TTS_HOME/voices, rồi voices/ đi kèm gói (nếu có)."""
     return [d for d in (home() / "voices", Path(__file__).resolve().parent / "voices") if d.is_dir()]
 
 
@@ -102,7 +102,7 @@ def find_voice(name: str, voices: dict[str, Voice] | None = None) -> Voice | Non
 def tts_text(text: str, dialect: str) -> str:
     """Văn bản đưa vào model, như cột `tts` của bộ chấm: giữ nguyên câu nếu chuẩn hoá chỉ đổi hoa/thường,
     ngược lại dùng bản chuẩn hoá (số, ngày, viết tắt đã thành chữ)."""
-    from vietvoice.text.normalize import normalize
+    from parrot_tts.text.normalize import normalize
 
     text = " ".join(text.split())
     n = normalize(text, dialect if dialect in ("bac", "nam") else "bac")
@@ -137,7 +137,7 @@ def _stub_wetext() -> None:
 
     class _NoWetext:
         def __init__(self, *a, **k):
-            raise RuntimeError("VietVoice không dùng wetext")
+            raise RuntimeError("Parrot-TTS không dùng wetext")
 
     sys.modules.setdefault("wetext", types.SimpleNamespace(Normalizer=_NoWetext))  # type: ignore[arg-type]
 
@@ -169,7 +169,7 @@ def _qwen_from_config(base: Path) -> None:
 
 
 def model_dir(base: Path, llm: Path | None) -> Path:
-    """Thư mục model = base model, llm.pt trỏ sang llm của VietVoice."""
+    """Thư mục model = base model, llm.pt trỏ sang llm của Parrot-TTS."""
     if llm is None:
         return base
     d = home() / "model"
@@ -185,17 +185,17 @@ def model_dir(base: Path, llm: Path | None) -> Path:
     return d
 
 
-class VietVoice:
+class ParrotTTS:
     def __init__(self, base: str | Path | None = None, llm: str | Path | None = None, asr: str | None = None):
-        """base: thư mục Fun-CosyVoice3-0.5B; llm: llm.pt của VietVoice. Mặc định lấy trong $VIETVOICE_HOME.
+        """base: thư mục Fun-CosyVoice3-0.5B; llm: llm.pt của Parrot-TTS. Mặc định lấy trong $PARROT_TTS_HOME.
         asr: model Whisper để làm sạch câu mẫu ("" = không làm sạch); mặc định whisper-large-v3-turbo nếu có
         transformers."""
         base = Path(base) if base else home() / "Fun-CosyVoice3-0.5B"
         llm = Path(llm) if llm else home() / "llm.pt"
         if not (base / "cosyvoice3.yaml").exists():
-            raise FileNotFoundError(f"không thấy base model ở {base}: chạy `vietvoice download` trước")
+            raise FileNotFoundError(f"không thấy base model ở {base}: chạy `parrot-tts download` trước")
         if not llm.exists():
-            raise FileNotFoundError(f"không thấy {llm}: chạy `vietvoice download` trước")
+            raise FileNotFoundError(f"không thấy {llm}: chạy `parrot-tts download` trước")
         _stub_wetext()
         _cosyvoice_on_path()
         _qwen_from_config(base)
@@ -227,7 +227,7 @@ class VietVoice:
         """-> (audio, sr, văn bản, ghi chú). Không có ASR hoặc không tìm được điểm cắt: giữ nguyên."""
         import soundfile as sf
 
-        from vietvoice.prompt import apply_cut, candidates, frames_db, pick_cut
+        from parrot_tts.prompt import apply_cut, candidates, frames_db, pick_cut
 
         a, sr = sf.read(str(wav), dtype="float32")
         if a.ndim > 1:
@@ -272,7 +272,7 @@ class VietVoice:
         if voice:
             v = find_voice(voice)
             if v is None:
-                raise KeyError(f"không có giọng {voice!r}; xem `vietvoice voices`")
+                raise KeyError(f"không có giọng {voice!r}; xem `parrot-tts voices`")
             prompt_wav, prompt_text, dialect = v.wav, v.text, dialect or v.region
             clean = False  # giọng đóng gói sẵn đã được làm sạch
         if not prompt_wav or not prompt_text:
@@ -318,5 +318,5 @@ def save(path: str | Path, audio: np.ndarray, sr: int) -> None:
 
     with sf.SoundFile(str(path), "w", sr, 1, "PCM_16") as f:
         f.comment = AI_MARK
-        f.software = "VietVoice"
+        f.software = "Parrot-TTS"
         f.write(audio)

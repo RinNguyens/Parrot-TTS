@@ -3,7 +3,7 @@
 # Cột: dialect <tab> word <tab> field <tab> expected <tab> rule
 # field: onset | glide | nucleus | coda | tone | glottal_onset
 # Chuỗi rỗng ghi là "-" ; glottal_onset ghi true/false.
-# Nguồn: doc "VietVoice – Đặc tả kỹ thuật TTS", mục 2 và mục 3.
+# Nguồn: doc "Parrot-TTS – Đặc tả kỹ thuật TTS", mục 2 và mục 3.
 dialect	word	field	expected	rule
 bac	da	onset	z	d → z (Bắc)
 nam	da	onset	j	d → j (Nam)

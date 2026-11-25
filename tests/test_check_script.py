@@ -1,9 +1,9 @@
 """Kiểm kịch bản thu âm bằng G2P (P2): mọi âm tiết phải phân tích được, liệt kê hết âm tiết lỗi.
 
-API cần có trong ``vietvoice.text.check_script``:
+API cần có trong ``parrot_tts.text.check_script``:
 - ``ScriptError(line_id, text, piece, message)``.
 - ``check_script(lines, dialect, normalize=None) -> list[ScriptError]``.
-- ``main(argv) -> int``: CLI ``python -m vietvoice.text.check_script <file.tsv> --dialect bac [--normalize]``.
+- ``main(argv) -> int``: CLI ``python -m parrot_tts.text.check_script <file.tsv> --dialect bac [--normalize]``.
 """
 
 import subprocess
@@ -11,8 +11,8 @@ import sys
 
 import pytest
 
-from vietvoice.text import check_script as cs
-from vietvoice.text.check_script import ScriptError, check_script, main
+from parrot_tts.text import check_script as cs
+from parrot_tts.text.check_script import ScriptError, check_script, main
 
 GOOD = [("s001", "ăn cơm chưa?"), ("s002", "xem tiktok nhé.")]
 
@@ -130,7 +130,7 @@ def test_cli_normalize_passes_dialect(tmp_path, monkeypatch):
 def test_module_entry_point(tmp_path):
     path = write_script(tmp_path, "s001\tăn cơm\ns002\tqwe\n")
     run = subprocess.run(
-        [sys.executable, "-m", "vietvoice.text.check_script", str(path), "--dialect", "bac"],
+        [sys.executable, "-m", "parrot_tts.text.check_script", str(path), "--dialect", "bac"],
         capture_output=True,
         text=True,
         check=False,

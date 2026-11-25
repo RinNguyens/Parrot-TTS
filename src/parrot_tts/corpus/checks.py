@@ -12,9 +12,9 @@ import unicodedata
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass, replace
 
-from vietvoice.corpus.coverage import CorpusConfig, Sentence, count_sentence, estimate_seconds, load_config
-from vietvoice.text.g2p import g2p
-from vietvoice.text.normalize import normalize
+from parrot_tts.corpus.coverage import CorpusConfig, Sentence, count_sentence, estimate_seconds, load_config
+from parrot_tts.text.g2p import g2p
+from parrot_tts.text.normalize import normalize
 
 Normalizer = Callable[[str, str], str]  # (văn bản thô, vùng) -> chữ đọc được
 

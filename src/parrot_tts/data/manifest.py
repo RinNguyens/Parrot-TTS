@@ -26,7 +26,7 @@ from typing import Annotated, Literal, Self, get_args
 import yaml
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, ValidationInfo, field_validator, model_validator
 
-from vietvoice.data.config import CONFIG_DIR, FrozenModel, load_qa_config
+from parrot_tts.data.config import CONFIG_DIR, FrozenModel, load_qa_config
 
 Dialect = Literal["bac", "hue", "nam"]
 Style = Literal["tin_tuc", "ke_chuyen", "quang_cao", "hoi_thoai"]

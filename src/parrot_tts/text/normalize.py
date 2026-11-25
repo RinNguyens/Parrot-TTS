@@ -37,7 +37,7 @@ from typing import Any, Literal, Protocol, get_args, runtime_checkable
 
 import yaml
 
-from vietvoice.text.g2p import DIALECTS, load_lexicon, parse_syllable
+from parrot_tts.text.g2p import DIALECTS, load_lexicon, parse_syllable
 
 DATA_DIR = Path(__file__).parent / "normalize_data"
 

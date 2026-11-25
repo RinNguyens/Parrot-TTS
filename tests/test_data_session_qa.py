@@ -1,7 +1,7 @@
 """P4: QA ngay sau mỗi phiên thu.
 
 Ngưỡng (đặc tả mục 5): đúng định dạng, SNR >= 40 dB, đỉnh <= -3 dBFS, không clip, nền ồn <= -60 dBFS.
-API: ``vietvoice.data.session_qa``: ``measure_levels``, ``check_file``, ``run_session``, ``main``.
+API: ``parrot_tts.data.session_qa``: ``measure_levels``, ``check_file``, ``run_session``, ``main``.
 """
 
 import json
@@ -10,7 +10,7 @@ import numpy as np
 import pytest
 from fixtures_audio import SR, good_take, noise, sha256, sine, speech_like, write_wav
 
-from vietvoice.data.session_qa import check_file, load_qa_config, main, measure_levels, run_session
+from parrot_tts.data.session_qa import check_file, load_qa_config, main, measure_levels, run_session
 
 
 @pytest.mark.parametrize(("speech_db", "noise_db"), [(-20.0, -70.0), (-25.0, -65.0), (-15.0, -80.0)])

@@ -5,7 +5,7 @@ from collections.abc import Iterable
 from pathlib import Path
 from typing import get_args
 
-from vietvoice.data.manifest import QcStatus
+from parrot_tts.data.manifest import QcStatus
 
 STATUSES: tuple[str, ...] = get_args(QcStatus)
 

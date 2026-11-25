@@ -1,9 +1,9 @@
-"""Máy đọc chạy trên máy của bạn cho trang web Parrot Voice (`vietvoice serve`).
+"""Máy đọc chạy trên máy của bạn cho trang web Parrot Voice (`parrot-tts serve`).
 
 Cùng API với infra/vast/tts_server.py, nên trang /create-tts và /giong dùng được ngay (ô "Máy đọc" để
 http://localhost:8000):
 
-- GET  /voices  các giọng đã cài (`vietvoice voices`), mã = tên thư mục (thanh_thanh, thanh...), kèm mã cũ (aliases)
+- GET  /voices  các giọng đã cài (`parrot-tts voices`), mã = tên thư mục (thanh_thanh, thanh...), kèm mã cũ (aliases)
                 mà POST /tts cũng nhận (fr07 = Trúc, fleurs = Hải...).
 - POST /tts     JSON {"text": "...", "voice": "thanh_thanh", "dialect": "nam"} -> audio/wav 24 kHz mono, có nhãn AI.
 - GET  /stats   lượt đọc theo giọng (chỉ đếm, không lưu văn bản), cho bảng xếp hạng /giong.
@@ -26,19 +26,19 @@ MAX_CHARS = 3000
 def wav_bytes(audio, sr: int) -> bytes:
     import soundfile as sf
 
-    from vietvoice.tts import AI_MARK
+    from parrot_tts.tts import AI_MARK
 
     buf = io.BytesIO()
     with sf.SoundFile(buf, "w", sr, 1, "PCM_16", format="WAV") as f:
         f.comment = AI_MARK
-        f.software = "VietVoice"
+        f.software = "Parrot-TTS"
         f.write(audio)
     return buf.getvalue()
 
 
 def make_handler(vv, voices: dict, usage, llm_name: str):
-    """vv: VietVoice (hoặc vật giả có .speak), voices: mã -> Voice, usage: vietvoice.usage.Usage."""
-    from vietvoice.tts import tts_text
+    """vv: ParrotTTS (hoặc vật giả có .speak), voices: mã -> Voice, usage: parrot_tts.usage.Usage."""
+    from parrot_tts.tts import tts_text
 
     lock = threading.Lock()
 
@@ -68,7 +68,7 @@ def make_handler(vv, voices: dict, usage, llm_name: str):
                 return self._json(200, usage.stats())
             if path == "/voices":
                 vs = [
-                    {"id": k, "label": v.label, "source": v.credit or "VietVoice", "aliases": list(v.aliases)}
+                    {"id": k, "label": v.label, "source": v.credit or "Parrot-TTS", "aliases": list(v.aliases)}
                     for k, v in voices.items()
                 ]
                 return self._json(200, {"llm": llm_name, "voices": vs})
@@ -119,15 +119,15 @@ def make_handler(vv, voices: dict, usage, llm_name: str):
 
 
 def serve(host: str, port: int, usage_path: Path | None, base=None, llm=None) -> None:
-    from vietvoice.tts import VietVoice, home, list_voices
-    from vietvoice.usage import Usage
+    from parrot_tts.tts import ParrotTTS, home, list_voices
+    from parrot_tts.usage import Usage
 
     voices = list_voices()
     if not voices:
-        raise SystemExit("chưa có giọng nào: chạy `vietvoice download` trước")
-    vv = VietVoice(base=base, llm=llm, asr="")
+        raise SystemExit("chưa có giọng nào: chạy `parrot-tts download` trước")
+    vv = ParrotTTS(base=base, llm=llm, asr="")
     llm_path = Path(llm) if llm else home() / "llm.pt"
-    handler = make_handler(vv, voices, Usage(usage_path), f"VietVoice ({llm_path.resolve().name})")
+    handler = make_handler(vv, voices, Usage(usage_path), f"Parrot-TTS ({llm_path.resolve().name})")
     names = ", ".join(v.label for v in voices.values())
-    print(f"Máy đọc VietVoice: {names}. Nghe ở http://{host}:{port}", flush=True)
+    print(f"Máy đọc Parrot-TTS: {names}. Nghe ở http://{host}:{port}", flush=True)
     ThreadingHTTPServer((host, port), handler).serve_forever()

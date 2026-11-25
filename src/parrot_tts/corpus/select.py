@@ -17,8 +17,8 @@ from collections.abc import Hashable, Iterable, Mapping, Sequence
 from dataclasses import dataclass, replace
 from enum import StrEnum
 
-from vietvoice.corpus.checks import Normalizer, normalize_for_compare
-from vietvoice.corpus.coverage import (
+from parrot_tts.corpus.checks import Normalizer, normalize_for_compare
+from parrot_tts.corpus.coverage import (
     CorpusConfig,
     Sentence,
     count_sentence,
@@ -27,8 +27,8 @@ from vietvoice.corpus.coverage import (
     valid_pairs,
     valid_tone_pairs,
 )
-from vietvoice.text.g2p import g2p
-from vietvoice.text.normalize import normalize
+from parrot_tts.text.g2p import g2p
+from parrot_tts.text.normalize import normalize
 
 # Mục tiêu: ("pair", âm vị, thanh) hoặc ("tone_pair", thanh trước, thanh sau).
 Target = tuple[str, str, str]

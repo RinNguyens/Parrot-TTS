@@ -20,8 +20,8 @@ from typing import Any
 
 import yaml
 
-from vietvoice.text import g2p as g2p_module
-from vietvoice.text.g2p import PUNCTUATION, WORD_BOUNDARY, g2p
+from parrot_tts.text import g2p as g2p_module
+from parrot_tts.text.g2p import PUNCTUATION, WORD_BOUNDARY, g2p
 
 CONFIG_PATH = Path(__file__).parent / "config.yaml"
 DIALECT_NAMES = {"bac": "Bắc", "nam": "Nam"}

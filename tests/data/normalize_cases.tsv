@@ -1,6 +1,6 @@
 # Ca kiểm tra chuẩn hoá văn bản theo vùng — mỗi dòng là MỘT câu vào và đầu ra đúng từng ký tự.
 # Chủ dự án là người quyết định giá trị đúng: sửa, thêm, xoá dòng ở đây, test tự đọc lại.
-# Luật nằm ở src/vietvoice/text/normalize_data/ (số theo vùng, viết tắt, đơn vị, tên chữ cái, ngữ cảnh).
+# Luật nằm ở src/parrot_tts/text/normalize_data/ (số theo vùng, viết tắt, đơn vị, tên chữ cái, ngữ cảnh).
 # Cột: dialect <tab> input <tab> expected <tab> category <tab> rule
 # dialect: bac | nam | * (cả hai vùng cùng kết quả). Ca khác nhau giữa hai vùng ghi hai dòng bac, nam.
 # input: văn bản gốc; "\n" là xuống dòng. Không dùng dấu nháy để bao chuỗi.
@@ -282,7 +282,7 @@ bac	1800-1900	một nghìn tám trăm đến một nghìn chín trăm	mo_ho	kho�
 nam	1800-1900	một ngàn tám trăm đến một ngàn chín trăm	mo_ho	khoảng năm
 bac	2020-2025	hai nghìn không trăm hai mươi đến hai nghìn không trăm hai mươi lăm	mo_ho	khoảng năm
 nam	2020-2025	hai ngàn không trăm hai mươi đến hai ngàn không trăm hai mươi lăm	mo_ho	khoảng năm
-*	vietvoice.vn	vietvoice chấm vê en	url_email	tên miền: chấm, đuôi vn đánh vần
+*	parrot.vn	parrot chấm vê en	url_email	tên miền: chấm, đuôi vn đánh vần
 *	https://www.google.com	vê kép vê kép vê kép chấm google chấm com	url_email	bỏ https://, www đánh vần
 *	rin@gmail.com	rin a còng gmail chấm com	url_email	NHÁP: @ đọc a còng (Nam có nơi đọc a móc)
 *	nguyen.van.a@abc.com.vn	nguyen chấm van chấm a a còng abc chấm com chấm vê en	url_email	email nhiều dấu chấm
@@ -290,7 +290,7 @@ nam	2020-2025	hai ngàn không trăm hai mươi đến hai ngàn không trăm ha
 *	Truy cập vtv.vn/tin-tuc nhé.	truy cập vê tê vê chấm vê en gạch chéo tin gạch ngang tuc nhé.	url_email	NHÁP: / đọc gạch chéo, - đọc gạch ngang; vtv không nguyên âm: đánh vần
 *	x.vn	ích chấm vê en	url_email	chữ cái đơn trong URL: đánh vần
 *	a@b.vn	a a còng bê chấm vê en	url_email	chữ cái đơn trong email: đánh vần (a là âm tiết)
-*	info_2027@vietvoice.vn	info gạch dưới hai không hai bảy a còng vietvoice chấm vê en	url_email	_ đọc gạch dưới
+*	info_2027@parrot.vn	info gạch dưới hai không hai bảy a còng parrot chấm vê en	url_email	_ đọc gạch dưới
 *	TikTok	tiktok	ngoai_lai	từ Latin giữ nguyên, viết thường; G2P tra từ điển ngoại lệ
 *	video TikTok	video tiktok	ngoai_lai	từ Latin
 *	Facebook	facebook	ngoai_lai	từ Latin
@@ -303,7 +303,7 @@ nam	2020-2025	hai ngàn không trăm hai mươi đến hai ngàn không trăm ha
 bac	2023 V-League	hai nghìn không trăm hai mươi ba vleague	ngoai_lai	V trước gạch nối không phải vôn; ghép vleague
 nam	2023 V-League	hai ngàn không trăm hai mươi ba vleague	ngoai_lai	V trước gạch nối không phải vôn; ghép vleague
 *	vitamin B	vitamin bê	ngoai_lai	chữ cái đơn đánh vần
-*	#VietVoice	vietvoice	ngoai_lai	bỏ dấu #
+*	#Parrot	parrot	ngoai_lai	bỏ dấu #
 *	café	cafe	ngoai_lai	không phải âm tiết, không có trong từ điển: bỏ dấu để G2P tra từ Latin
 *	naïve	naive	ngoai_lai	dấu lạ (ï) bỏ, giữ chữ gốc
 *	Tuyệt vời 😀	tuyệt vời	ky_hieu	bỏ emoji

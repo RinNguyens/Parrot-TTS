@@ -1,6 +1,6 @@
 """Bước 12 + schema metadata (đặc tả mục 4): Utterance, Speaker, đọc/ghi JSONL có kiểm tra.
 
-API: ``vietvoice.data.manifest``: ``Utterance``, ``Speaker``, ``write_manifest``, ``read_manifest``,
+API: ``parrot_tts.data.manifest``: ``Utterance``, ``Speaker``, ``write_manifest``, ``read_manifest``,
 ``read_speakers``, ``write_speakers``, ``check_consent``, ``ManifestError``.
 """
 
@@ -10,7 +10,7 @@ import pytest
 from fixtures_audio import sha256
 from pydantic import ValidationError
 
-from vietvoice.data.manifest import (
+from parrot_tts.data.manifest import (
     ManifestError,
     Speaker,
     Utterance,
@@ -31,7 +31,7 @@ SPEC_LINE = (
     '"tones": [5, 2, 1, 1, 1, 1, 2, 1], "dialect": "bac", "province": "HN", "style": "tin_tuc", '
     '"speech_rate": 5.6, "f0_mean_st": 0.0, "alignment_path": "align/hn_f01/000123.TextGrid", '
     '"snr_db": 47.3, "loudness_lufs": -23.0, "asr_cer": 0.012, "qc_status": "pass", "split": "train", '
-    '"consent_id": "CT-2026-007", "license": "vietvoice-commercial-v1", "recorded_at": "2027-01-15"}'
+    '"consent_id": "CT-2026-007", "license": "parrot-tts-commercial-v1", "recorded_at": "2027-01-15"}'
 )
 
 
@@ -140,7 +140,7 @@ def test_non_commercial_license_allowed_outside_train():
 
 
 def test_train_license_allow_list_from_yaml():
-    assert "vietvoice-commercial-v1" in load_manifest_config().train_licenses
+    assert "parrot-tts-commercial-v1" in load_manifest_config().train_licenses
 
 
 def test_tones_length_must_match_syllables():
