@@ -1,0 +1,44 @@
+# Luật biến âm theo vùng — mỗi dòng kiểm tra MỘT trường của MỘT âm tiết.
+# Chủ dự án là người quyết định giá trị đúng: sửa, thêm, xoá dòng ở đây, test tự đọc lại.
+# Cột: dialect <tab> word <tab> field <tab> expected <tab> rule
+# field: onset | glide | nucleus | coda | tone | glottal_onset
+# Chuỗi rỗng ghi là "-" ; glottal_onset ghi true/false.
+# Nguồn: doc "VietVoice – Đặc tả kỹ thuật TTS", mục 2 và mục 3.
+dialect	word	field	expected	rule
+bac	da	onset	z	d → z (Bắc)
+nam	da	onset	j	d → j (Nam)
+bac	gia	onset	z	gi → z (Bắc)
+nam	gia	onset	j	gi → j (Nam)
+bac	ra	onset	z	r → z (Bắc)
+bac	va	onset	v	v giữ v (Bắc)
+bac	tre	onset	c	tr nhập ch (Bắc)
+bac	che	onset	c	ch (Bắc)
+nam	tre	onset	ʈ	tr giữ quặt lưỡi (Nam)
+nam	che	onset	c	ch (Nam)
+bac	sa	onset	s	s nhập x (Bắc)
+bac	xa	onset	s	x (Bắc)
+nam	sa	onset	ʂ	s giữ quặt lưỡi (Nam)
+nam	xa	onset	s	x (Nam)
+bac	qua	onset	k	qu = k + w (Bắc)
+bac	qua	glide	w	qu = k + w (Bắc)
+nam	qua	onset	-	qu → w (Nam)
+nam	qua	glide	w	qu → w (Nam)
+nam	anh	coda	n	-anh → an (Nam)
+nam	ách	coda	t	-ach → at (Nam)
+bac	lan	coda	n	-n giữ n (Bắc)
+nam	lan	coda	ŋ	-n sau a → ŋ (Nam)
+bac	mặt	coda	t	-t giữ t (Bắc)
+nam	mặt	coda	k	-t sau ă → k (Nam)
+bac	đọc	coda	k͡p	-oc khép môi (Bắc)
+nam	đọc	coda	k͡p	-oc khép môi (Nam)
+bac	ông	coda	ŋ͡m	-ông khép môi (Bắc)
+bac	mã	tone	3	ngã giữ T3 (Bắc)
+nam	mã	tone	4	ngã nhập hỏi (Nam)
+bac	mả	tone	4	hỏi T4 (Bắc)
+nam	mả	tone	4	hỏi T4 (Nam)
+bac	mát	tone	7	sắc + âm cuối tắc → T7
+nam	mát	tone	7	sắc + âm cuối tắc → T7
+bac	mạt	tone	8	nặng + âm cuối tắc → T8
+bac	ăn	glottal_onset	true	mở đầu bằng nguyên âm có ʔ
+bac	uống	glottal_onset	true	mở đầu bằng nguyên âm có ʔ
+bac	cơm	glottal_onset	false	có phụ âm đầu thì không có ʔ

@@ -1,0 +1,40 @@
+# Tên chữ cái để đánh vần chữ hoa không có trong abbreviations.tsv (VTV, FPT) và chữ cái đứng một mình.
+# key là chữ hoa; chữ thường tự đổi ra chữ hoa khi tra.
+# Cột: dialect <tab> key <tab> reading
+# dialect: bac | nam | * (cả hai vùng). Dòng của vùng ghi đè dòng *.
+# reading: chữ thường tiếng Việt cách nhau một dấu cách (không số, không dấu câu).
+# Dòng có chữ NHÁP ở cột note là Claude điền tạm (giọng phát thanh phổ biến), cần chủ dự án duyệt.
+dialect	key	reading	note
+*	A	a	
+*	Ă	á	
+*	Â	ớ	
+*	B	bê	
+*	C	xê	
+*	D	dê	NHÁP: nhiều người đọc đê
+*	Đ	đê	
+*	E	e	
+*	Ê	ê	
+*	F	ép	
+*	G	giê	
+*	H	hát	NHÁP: Nam có nơi đọc hắt
+*	I	i	
+*	J	gi	NHÁP
+*	K	ca	
+*	L	e lờ	NHÁP
+*	M	em mờ	NHÁP
+*	N	en nờ	NHÁP
+*	O	o	
+*	Ô	ô	
+*	Ơ	ơ	
+*	P	pê	
+*	Q	quy	
+*	R	e rờ	NHÁP
+*	S	ét	NHÁP: có nơi đọc ét xì
+*	T	tê	
+*	U	u	
+*	Ư	ư	
+*	V	vê	
+*	W	vê kép	NHÁP: Nam có nơi đọc đắp liu
+*	X	ích	NHÁP: có nơi đọc ích xì
+*	Y	i dài	NHÁP: Nam có nơi đọc i cà rét
+*	Z	dét	NHÁP

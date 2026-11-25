@@ -1,0 +1,27 @@
+# Cách đọc trong URL và email: ký tự ngăn cách và phần tên miền đọc riêng.
+# Phần chữ khác giữ nguyên (viết thường, G2P tra từ điển ngoại lệ); chữ số đọc từng chữ số.
+# Cột: dialect <tab> key <tab> reading
+# dialect: bac | nam | * (cả hai vùng). Dòng của vùng ghi đè dòng *.
+# reading: chữ thường tiếng Việt cách nhau một dấu cách (không số, không dấu câu).
+# Dòng có chữ NHÁP ở cột note là Claude điền tạm (giọng phát thanh phổ biến), cần chủ dự án duyệt.
+dialect	key	reading	note
+*	.	chấm	
+*	/	gạch chéo	NHÁP: Nam có nơi đọc xẹt
+*	-	gạch ngang	
+*	_	gạch dưới	
+*	@	a còng	NHÁP: Nam có nơi đọc a móc
+*	:	hai chấm	
+*	?	chấm hỏi	
+*	=	bằng	
+*	&	và	
+*	#	thăng	
+*	%	phần trăm	
+*	+	cộng	
+*	www	vê kép vê kép vê kép	
+*	com	com	
+*	vn	vê en	
+*	net	nét	
+*	org	o rờ gờ	NHÁP
+*	edu	e đu	NHÁP
+*	gov	gờ o vê	NHÁP
+*	io	i o	

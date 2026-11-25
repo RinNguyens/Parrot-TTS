@@ -1,0 +1,64 @@
+# Từ điển ngoại lệ G2P giọng Nam (Sài Gòn): từ nước ngoài, tên riêng, thương hiệu.
+# Chủ dự án viết và duyệt file này. G2P tra file này TRƯỚC luật rules/nam.yaml.
+#
+# Mỗi dòng 3 cột cách nhau bằng một phím TAB (không dùng dấu cách):
+#   từ <TAB> cách đọc <TAB> ghi chú
+# - từ: một từ liền, chỉ chữ cái (không dấu cách, không số). Không phân biệt hoa thường:
+#   "TikTok", "tiktok", "TIKTOK" là một. Mỗi từ chỉ ghi một lần.
+# - cách đọc: một hay nhiều âm tiết tiếng Việt cách nhau bằng dấu cách; mỗi âm tiết sau đó
+#   được đọc bằng luật của vùng này (nên "r", "s", "tr", "d"... vẫn đọc theo vùng).
+#   Âm tiết không phân tích được thì G2P báo lỗi kèm số dòng, không chạy tiếp.
+# - ghi chú: tuỳ ý, có thể bỏ trống. Dòng có "NHÁP" là Claude điền tạm, chờ chủ dự án duyệt.
+# Dòng trống và dòng bắt đầu bằng # được bỏ qua.
+
+tiktok	tích tốc	NHÁP: ví dụ trong đặc tả mục 3
+youtube	diu túp	NHÁP
+facebook	phây búc	NHÁP
+video	vi đê ô	NHÁP
+online	on lai	NHÁP
+ok	ô kê	NHÁP
+livestream	lai xờ trim	NHÁP
+idol	ai đồ	NHÁP
+fan	phan	NHÁP
+like	lai	NHÁP
+share	se	NHÁP
+view	viu	NHÁP
+follow	pho lô	NHÁP
+clip	cờ líp	NHÁP
+show	sô	NHÁP
+menu	mê nu	NHÁP
+wifi	oai phai	NHÁP
+app	áp	NHÁP
+email	i meo	NHÁP
+iphone	ai phôn	NHÁP
+google	gu gồ	NHÁP
+zalo	da lô	NHÁP
+shopee	sốp pi	NHÁP
+vlog	vi lốc	NHÁP
+hashtag	hát tác	NHÁP
+game	ghêm	NHÁP
+review	ri viu	NHÁP
+trend	tren	NHÁP
+selfie	sen phi	NHÁP
+camera	ca mê ra	NHÁP
+laptop	láp tóp	NHÁP
+freeship	phờ ri síp	NHÁP
+unbox	ăn bốc	NHÁP
+combo	com bô	NHÁP
+bluetooth	bờ lu tút	NHÁP
+smartwatch	xờ mát oát	NHÁP
+top	tóp	NHÁP
+inch	in	NHÁP
+workshop	guốc sóp	NHÁP
+file	phai	NHÁP
+series	xi ri	NHÁP
+shop	sóp	NHÁP
+test	tét	NHÁP
+chip	chíp	NHÁP
+hoodie	hu đi	NHÁP
+size	sai	NHÁP
+kpop	kây póp	NHÁP
+vleague	vê lích	NHÁP
+đắk	đắc	NHÁP: tên tỉnh Đắk Lắk, Đắk Nông
+lắk	lắc	NHÁP: tên tỉnh Đắk Lắk
+cafe	ca phê	NHÁP: café, cafe

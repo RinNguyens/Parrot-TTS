@@ -1,0 +1,36 @@
+# Từ đọc số. "common" dùng cho mọi vùng; "dialects.<vùng>" ghi đè "common".
+# Chủ dự án sửa ở đây, không sửa code. Dòng có "NHÁP" là Claude điền tạm, chờ duyệt.
+
+common:
+  digits: [không, một, hai, ba, bốn, năm, sáu, bảy, tám, chín]
+  ten: mười                 # 10, 11..19
+  tens: mươi                # hai mươi, ba mươi
+  hundred: trăm
+  thousand: nghìn
+  million: triệu
+  billion: tỷ               # NHÁP: tỷ hay tỉ
+  zero_tens: linh           # 105: một trăm linh năm
+  after_ten: {5: lăm}                   # mười lăm (mười một, mười bốn giữ nguyên)
+  after_tens: {1: mốt, 4: tư, 5: lăm}   # hai mươi mốt, hai mươi tư, hai mươi lăm (NHÁP: tư)
+  ordinal: {1: nhất, 4: tư}             # thứ nhất, thứ tư
+  month: {4: tư}                        # tháng tư
+  minus: âm
+  decimal_comma: phẩy       # 2,5 và 2.5 kèm đơn vị
+  decimal_dot: chấm         # 2.5 không đơn vị, số phiên bản 2.5.1
+  fraction: phần            # 1/2 -> một phần hai
+  ratio: trên               # 10/10 -> mười trên mười
+  range: đến                # 3-4 -> ba đến bốn
+  day: ngày
+  month_word: tháng
+  year: năm
+  hour: giờ
+  minute: phút
+  second: giây
+
+dialects:
+  bac:
+    thousand: nghìn
+    zero_tens: linh
+  nam:
+    thousand: ngàn
+    zero_tens: lẻ

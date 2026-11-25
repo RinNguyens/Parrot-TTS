@@ -1,0 +1,67 @@
+# Đơn vị và tiền tệ đứng ngay SAU số (5km, 50.000đ, 50k, 30°C). Khớp đúng chữ hoa/thường.
+# Ký hiệu được đứng TRƯỚC số ($50) liệt kê ở config.yaml (currency_prefix), cách đọc vẫn lấy ở đây.
+# Cột: dialect <tab> key <tab> reading
+# dialect: bac | nam | * (cả hai vùng). Dòng của vùng ghi đè dòng *.
+# reading: chữ thường tiếng Việt cách nhau một dấu cách (không số, không dấu câu).
+# Dòng có chữ NHÁP ở cột note là Claude điền tạm (giọng phát thanh phổ biến), cần chủ dự án duyệt.
+dialect	key	reading	note
+*	km	ki lô mét	
+*	m	mét	
+*	cm	xen ti mét	
+*	mm	mi li mét	
+*	km²	ki lô mét vuông	
+*	km2	ki lô mét vuông	
+*	m²	mét vuông	
+*	m2	mét vuông	
+*	cm²	xen ti mét vuông	
+*	m³	mét khối	
+*	m3	mét khối	
+*	ha	héc ta	
+*	kg	ki lô gam	
+*	g	gam	
+*	mg	mi li gam	
+*	l	lít	
+*	ml	mi li lít	
+*	°C	độ xê	
+*	℃	độ xê	
+*	°F	độ ép	
+*	°	độ	
+*	km/h	ki lô mét trên giờ	
+*	m/s	mét trên giây	
+*	h	giờ	
+*	p	phút	NHÁP
+*	s	giây	
+*	kW	ki lô oát	
+*	kWh	ki lô oát giờ	
+*	W	oát	
+*	V	vôn	
+*	mAh	mi li am pe giờ	NHÁP
+*	Hz	héc	
+*	GHz	gi ga héc	NHÁP
+*	MB	mê ga bai	NHÁP
+*	GB	gi ga bai	NHÁP
+*	TB	tê ra bai	NHÁP
+*	KB	ki lô bai	NHÁP
+*	Kbps	ki lô bít trên giây	NHÁP
+*	Mbps	mê ga bít trên giây	NHÁP
+*	Gbps	gi ga bít trên giây	NHÁP
+*	MHz	mê ga héc	NHÁP
+*	fps	khung hình trên giây	NHÁP
+*	inch	inh	NHÁP
+*	kcal	ki lô ca lo	
+*	%	phần trăm	
+*	đ	đồng	
+*	₫	đồng	
+*	đồng	đồng	
+*	VND	việt nam đồng	NHÁP
+*	VNĐ	việt nam đồng	NHÁP
+*	USD	đô la mỹ	NHÁP
+*	$	đô la	
+*	€	ơ rô	NHÁP
+*	£	bảng anh	
+*	¥	yên	
+*	k	nghìn	
+*	K	nghìn	
+nam	k	ngàn	
+nam	K	ngàn	
+*	tr	triệu	

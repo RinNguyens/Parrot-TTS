@@ -1,0 +1,22 @@
+# Ngưỡng QA phiên thu và kiểm tra định dạng (đặc tả mục 5, mục 6 bước 1).
+ingest:
+  format:
+    containers: [WAV, WAVEX]   # WAVEX = WAVE_FORMAT_EXTENSIBLE, hay gặp ở file 24-bit
+    sample_rate: 48000
+    subtype: PCM_24        # 24-bit PCM có dấu
+    channels: 1
+  clipping:
+    lsb_tolerance: 1       # mẫu cách full scale <= 1 LSB coi là chạm trần
+    min_run: 3             # >= 3 mẫu liên tiếp chạm trần mới tính là một đoạn clip
+
+qa:
+  min_snr_db: 40.0
+  max_peak_dbfs: -3.0
+  max_noise_floor_dbfs: -60.0
+
+analysis:
+  frame_ms: 20             # khung không chồng lấn để đo mức
+  noise_percentile: 2      # nền ồn = RMS của 2% khung nhỏ nhất (cần >= 2% thời lượng là lặng)
+  speech_margin_db: 15     # khung tiếng nói: cao hơn nền ồn >= 15 dB
+  db_floor: -150.0         # chặn dưới khi đổi ra dB; khung ở mức này (số 0 tuyệt đối) không tính vào nền ồn
+  max_zero_run_ms: 10      # đoạn số 0 tuyệt đối dài hơn thì loại (nghi gate, khử ồn, mất tín hiệu)

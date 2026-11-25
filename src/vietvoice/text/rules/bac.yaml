@@ -1,0 +1,83 @@
+# Luật G2P giọng Bắc (Hà Nội). Chủ dự án viết và duyệt file này.
+# Code (text/g2p.py) chỉ tách chữ viết thành âm đầu / vần / thanh; mọi cách đọc nằm ở đây.
+# Nguồn: doc "VietVoice – Đặc tả kỹ thuật TTS", mục 2 và mục 3.
+# Dòng có "NHÁP" là Claude điền tạm, chờ chủ dự án duyệt.
+
+# Âm đầu: chữ viết -> âm vị. "" là âm tiết mở đầu bằng nguyên âm (sẽ có ʔ).
+onset:
+  "": ""
+  b: ɓ
+  c: k
+  k: k
+  ch: c
+  d: z        # d -> z (Bắc)
+  gi: z       # gi -> z (Bắc)
+  r: z        # r -> z (Bắc)
+  đ: ɗ        # NHÁP
+  g: ɣ        # NHÁP
+  gh: ɣ       # NHÁP
+  h: h
+  kh: x       # NHÁP
+  l: l
+  m: m
+  n: n
+  ng: ŋ
+  ngh: ŋ
+  nh: ɲ
+  p: p
+  ph: f
+  s: s        # s nhập x (Bắc)
+  t: t
+  th: tʰ      # NHÁP
+  tr: c       # tr nhập ch (Bắc)
+  v: v
+  x: s
+
+# qu = k + w (Bắc)
+qu:
+  onset: k
+  glide: w
+
+# Âm chính: nguyên âm chữ viết -> âm vị.
+# ia, yê -> iê ; ưa -> ươ ; ua -> uô (code gộp sẵn trước khi tra bảng).
+nucleus:
+  a: a
+  ă: a        # NHÁP: theo ví dụ "ăn" = ʔ a n ở đặc tả; làm "tai" và "tay" đọc giống nhau
+  â: ə̆        # NHÁP
+  e: ɛ
+  ê: e
+  i: i
+  o: ɔ
+  oo: ɔ       # xoong, boong
+  ô: o
+  ơ: ə        # theo ví dụ "cơm" = k ə m ở đặc tả
+  u: u
+  ư: ɨ
+  iê: iə
+  uô: uə
+  ươ: ɨə
+
+# Âm cuối: chữ viết -> âm vị. i/y -> j và o/u -> w là bán âm cuối (tai, tay, cao, cau).
+coda:
+  "": ""
+  c: k
+  ch: ʲk
+  m: m
+  n: n       # -n giữ n (Bắc)
+  ng: ŋ
+  nh: ʲŋ
+  p: p
+  t: t       # -t giữ t (Bắc)
+  i: j
+  u: w
+
+# Luật âm cuối theo nguyên âm đứng trước (chữ viết). Dòng đầu tiên khớp được dùng.
+# to: âm cuối mới (bỏ trống = giữ bảng coda) ; nucleus: âm chính mới (bỏ trống = giữ).
+coda_rules:
+  - {coda: c, after: [o, ô], to: k͡p}     # -oc, -ôc khép môi
+  - {coda: ng, after: [o, ô], to: ŋ͡m}    # -ong, -ông khép môi
+  - {coda: nh, after: [a], nucleus: ɛ}    # -anh -> ɛʲŋ
+  - {coda: ch, after: [a], nucleus: ɛ}    # -ach -> ɛʲk
+
+# Thanh: số thanh theo chữ viết (1..8) -> số thanh của vùng. Bắc giữ đủ 8 thanh.
+tone: {}

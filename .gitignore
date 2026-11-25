@@ -1,0 +1,32 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv*
+
+# Công cụ
+.pytest_cache/
+.ruff_cache/
+
+# Không bao giờ commit: dữ liệu, audio, checkpoint, khoá
+/data/
+*.wav
+*.flac
+*.mp3
+*.ckpt
+*.pt
+*.safetensors
+.env
+.env.*
+
+# Mã nguồn và model bên ngoài (tải về, không commit)
+/third_party/
+/models/
+
+# thư mục làm việc riêng của agent
+.agent

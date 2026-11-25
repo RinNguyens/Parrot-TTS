@@ -1,0 +1,5 @@
+# Bước 2: chuẩn hoá độ lớn theo ITU-R BS.1770 (pyloudnorm). Giới hạn đỉnh lấy từ qa.yaml.
+target_lufs: -23.0
+tolerance_lu: 0.05      # sai lệch cho phép sau chuẩn hoá trước khi chỉnh thêm một lượt
+max_passes: 3           # cổng tuyệt đối -70 LUFS có thể đổi khối được tính khi tăng gain
+output_subtype: PCM_24

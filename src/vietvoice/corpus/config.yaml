@@ -1,0 +1,30 @@
+# Ngưỡng cho bộ câu test và kịch bản thu (P3). Nguồn: đặc tả mục 4, 5, 10 và plan P3.
+
+coverage:
+  # Mỗi cặp (âm vị, thanh) hợp lệ phải xuất hiện ít nhất bấy nhiêu lần (plan P3).
+  min_pair_count: 10
+  # Mỗi cặp thanh liền kề phải xuất hiện ít nhất bấy nhiêu lần (plan P3: "đủ 64 cặp", tức ≥ 1).
+  min_tone_pair_count: 1
+  # false: dấu , . ? ! cắt chuỗi thanh, không tính cặp thanh qua chỗ ngắt (người đọc thường ngừng ở đó).
+  tone_pairs_across_punctuation: false
+  # Số cặp thiếu tối đa được liệt kê trong báo cáo chữ.
+  report_max_listed: 30
+
+duration:
+  # Âm tiết/giây, ví dụ ở đặc tả mục 4.
+  speech_rate: 5.6
+  # Độ dài câu ước tính cho phép (giây), plan P3.
+  min_seconds: 1.0
+  max_seconds: 15.0
+
+script:
+  # Cơ cấu kịch bản mỗi giọng (đặc tả mục 5). Thứ tự ở đây là thứ tự chia phần dư khi làm tròn.
+  quotas:
+    phu_am_vi: 0.30       # câu phủ âm vị và thanh điệu, chọn bằng thuật toán tham lam
+    quang_cao: 0.25       # văn phong video short và quảng cáo
+    tin_tuc: 0.20         # tin tức
+    ke_chuyen: 0.15       # kể chuyện, đoạn dài
+    hoi_cam_than: 0.05    # câu hỏi, câu cảm thán
+    tu_vung_mien: 0.05    # từ đặc trưng vùng
+  # Loại câu do thuật toán tham lam chọn.
+  coverage_category: phu_am_vi

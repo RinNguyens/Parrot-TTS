@@ -1,0 +1,13 @@
+# Ký hiệu đứng riêng (không nằm trong số, URL, email) -> cách đọc. Ký hiệu không có ở đây bị bỏ.
+# Cột: dialect <tab> key <tab> reading
+# dialect: bac | nam | * (cả hai vùng). Dòng của vùng ghi đè dòng *.
+# reading: chữ thường tiếng Việt cách nhau một dấu cách (không số, không dấu câu).
+# Dòng có chữ NHÁP ở cột note là Claude điền tạm (giọng phát thanh phổ biến), cần chủ dự án duyệt.
+dialect	key	reading	note
+*	&	và	
+*	+	cộng	
+*	=	bằng	
+*	%	phần trăm	
+*	@	a còng	NHÁP: Nam có nơi đọc a móc
+*	×	nhân	
+*	÷	chia	

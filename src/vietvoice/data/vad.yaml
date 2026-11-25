@@ -1,0 +1,14 @@
+# Bước 3: cắt câu (đặc tả mục 6). Cắt ở khoảng lặng >= 300 ms, giữ 0,1–0,2 s lặng hai đầu.
+min_silence_s: 0.3      # khoảng lặng ngắn hơn thì gộp hai đoạn tiếng nói làm một câu
+pad_s: 0.15             # lặng giữ lại mỗi đầu câu (bị giới hạn bởi mép file và nửa khoảng lặng)
+min_pad_s: 0.1          # đệm thực tế dưới mức này thì đoạn cắt bị đánh dấu pad_ok = false
+output_subtype: PCM_24
+
+# VAD theo năng lượng (mặc định cho tới khi có torch / Silero VAD ở P7).
+energy:
+  frame_ms: 10
+  noise_percentile: 2   # mức nền = phân vị 2 của mức khung (dB); cần >= 2% thời lượng là lặng
+  loud_percentile: 99   # mức tiếng to = phân vị 99
+  rel_threshold: 0.25   # ngưỡng = nền + 25% khoảng cách (nền -> tiếng to) ...
+  min_margin_db: 6.0    # ... nhưng không thấp hơn nền + 6 dB
+  db_floor: -150.0

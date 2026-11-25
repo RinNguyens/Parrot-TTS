@@ -1,0 +1,237 @@
+# VietVoice – bộ câu test v0 (BẢN NHÁP)
+# Trạng thái: NHÁP, chưa duyệt. Chủ dự án và người bản xứ (một người Bắc, một người Nam)
+# phải đọc to, sửa và duyệt từng câu trước khi khoá phiên bản và dùng để chấm checkpoint.
+# Bộ câu test giữ ngoài kịch bản thu âm và dữ liệu huấn luyện (đặc tả mục 10). Không chép câu
+# nào ở đây sang data/scripts/ hay manifest train/val.
+#
+# Định dạng: UTF-8, mỗi dòng một câu, 4 cột cách nhau bằng TAB, không có dòng tiêu đề:
+#   id<TAB>dialect<TAB>category<TAB>text
+# Dòng bắt đầu bằng # là chú thích. Dòng trống bỏ qua.
+# dialect: bac (chỉ giọng Bắc đọc), nam (chỉ giọng Nam đọc), * (cả hai giọng đọc).
+# category: cap_toi_thieu, am_tiet_tac, mo_dau_nguyen_am, tu_vung_mien, so_va_tieng_anh,
+#           cau_hoi_cam_than, doan_dai. Xem corpus/README.md.
+# text: văn bản gốc như người làm video sẽ gõ. Riêng so_va_tieng_anh có số, đơn vị, ký hiệu
+#       và từ tiếng Anh, phải qua bước chuẩn hoá (P1) trước G2P. Các loại khác chỉ dùng dấu , . ? !
+# Mọi câu là văn bản tự viết cho VietVoice, không trích sách, báo, bài hát.
+v0_ctt_001	*	cap_toi_thieu	Tôi đọc chữ ma, má, mà, mả, mã, mạ.
+v0_ctt_002	*	cap_toi_thieu	Bây giờ tôi đọc chữ ba, bá, bà, bả, bã, bạ.
+v0_ctt_003	*	cap_toi_thieu	Em hãy nghe kỹ các chữ la, lá, là, lả, lã, lạ.
+v0_ctt_004	*	cap_toi_thieu	Tôi đọc chậm từng chữ ta, tá, tà, tả, tã, tạ.
+v0_ctt_005	*	cap_toi_thieu	Tiếp theo là các chữ hô, hố, hồ, hổ, hỗ, hộ.
+v0_ctt_006	*	cap_toi_thieu	Tôi đọc chữ bo, bó, bò, bỏ, bõ, bọ.
+v0_ctt_007	*	cap_toi_thieu	Tôi đọc lại chữ vi, ví, vì, vỉ, vĩ, vị.
+v0_ctt_008	*	cap_toi_thieu	Hãy nghe tôi đọc chữ đo, đó, đò, đỏ, đõ, đọ.
+v0_ctt_009	*	cap_toi_thieu	Tôi đọc chữ sa, sá, sà, sả, sã, sạ.
+v0_ctt_010	*	cap_toi_thieu	Tôi đọc chữ mi, mí, mì, mỉ, mĩ, mị.
+v0_ctt_011	*	cap_toi_thieu	Tôi đọc chữ ngô, ngố, ngồ, ngổ, ngỗ, ngộ.
+v0_ctt_012	*	cap_toi_thieu	Tôi đọc chữ nga, ngá, ngà, ngả, ngã, ngạ.
+v0_ctt_013	*	cap_toi_thieu	Tôi đọc chữ cho, chó, chò, chỏ, chõ, chọ.
+v0_ctt_014	*	cap_toi_thieu	Tôi đọc chữ ve, vé, vè, vẻ, vẽ, vẹ.
+v0_ctt_015	*	cap_toi_thieu	Tôi đọc chữ me, mé, mè, mẻ, mẽ, mẹ.
+v0_ctt_016	*	cap_toi_thieu	Tôi đọc chữ cô, cố, cồ, cổ, cỗ, cộ.
+v0_ctt_017	*	cap_toi_thieu	Tôi nói chữ nghỉ, không phải chữ nghĩ.
+v0_ctt_018	*	cap_toi_thieu	Tôi nói chữ bảo, không phải chữ bão.
+v0_ctt_019	*	cap_toi_thieu	Tôi nói chữ mở, không phải chữ mỡ.
+v0_ctt_020	*	cap_toi_thieu	Tôi nói chữ sửa, không phải chữ sữa.
+v0_ctt_021	*	cap_toi_thieu	Tôi nói chữ vẻ, không phải chữ vẽ.
+v0_ctt_022	*	cap_toi_thieu	Tôi nói chữ đổ, không phải chữ đỗ.
+v0_ctt_023	*	cap_toi_thieu	Tôi viết chữ cải, không phải chữ cãi.
+v0_ctt_024	*	cap_toi_thieu	Tôi viết chữ lẻ, không phải chữ lẽ.
+v0_ctt_025	*	cap_toi_thieu	Tôi viết chữ dở, không phải chữ dỡ.
+v0_ctt_026	*	cap_toi_thieu	Tôi đọc chữ bán, rồi đọc chữ bạn.
+v0_ctt_027	*	cap_toi_thieu	Tôi đọc chữ hát, rồi đọc chữ hạt.
+v0_ctt_028	*	cap_toi_thieu	Tôi đọc chữ vì, rồi đọc chữ vị.
+v0_ctt_029	*	cap_toi_thieu	Tôi đọc chữ cò, rồi đọc chữ cọ.
+v0_ctt_030	*	cap_toi_thieu	Tôi đọc chữ mát, rồi đọc chữ mạt.
+v0_ctt_031	*	cap_toi_thieu	Mẹ mua cá, không mua cà.
+v0_ctt_032	*	cap_toi_thieu	Bé vẽ con hổ đứng bên hồ nước.
+v0_ctt_033	*	cap_toi_thieu	Anh ấy nghĩ rằng chị cần nghỉ một hôm.
+v0_ctt_034	*	cap_toi_thieu	Cơn bão sắp tới, mẹ bảo cả nhà ở trong.
+v0_ctt_035	*	cap_toi_thieu	Chị mở hộp sữa rồi sửa lại cái nắp.
+v0_ctt_036	*	cap_toi_thieu	Chiếc lá này có màu rất lạ.
+v0_ctt_037	*	cap_toi_thieu	Hai anh em cãi nhau chỉ vì đĩa rau cải.
+v0_ctt_038	*	cap_toi_thieu	Bức tranh có vẻ chưa vẽ xong.
+v0_tac_001	*	am_tiet_tac	Hạt mít luộc ăn rất bùi.
+v0_tac_002	*	am_tiet_tac	Tết này cả nhà đi thăm bác ở quê.
+v0_tac_003	*	am_tiet_tac	Chị ấy đặt một chiếc bánh sinh nhật thật đẹp.
+v0_tac_004	*	am_tiet_tac	Cuốn sách này mỏng nhưng đọc rất thích.
+v0_tac_005	*	am_tiet_tac	Sáng sớm, khách đã đứng chật kín trước cửa tiệm.
+v0_tac_006	*	am_tiet_tac	Mắt cậu bé sáng lên khi thấy chiếc xe đạp mới.
+v0_tac_007	*	am_tiet_tac	Học sinh tập hát một bài mới trong giờ nhạc.
+v0_tac_008	*	am_tiet_tac	Thịt kho ăn với cơm nóng thì ngon tuyệt.
+v0_tac_009	*	am_tiet_tac	Lúc nắng gắt, bạn nhớ bôi kem chống nắng.
+v0_tac_010	*	am_tiet_tac	Chúc mừng bạn đã đạt kết quả tốt nhất lớp.
+v0_tac_011	*	am_tiet_tac	Một chút muối, một chút đường là đủ vị.
+v0_tac_012	*	am_tiet_tac	Gió bấc thổi rát mặt suốt mấy ngày liền.
+v0_tac_013	*	am_tiet_tac	Cô đầu bếp cắt cá thật khéo và nhanh.
+v0_tac_014	*	am_tiet_tac	Bé Út thích nhặt lá khô ngoài sân.
+v0_tac_015	*	am_tiet_tac	Máy tính bật mãi không lên, chắc hết pin.
+v0_tac_016	*	am_tiet_tac	Chiếc áo khoác này ấm, nhẹ và rất chắc chắn.
+v0_tac_017	*	am_tiet_tac	Mực nước sông dâng cao sau đợt mưa lớn.
+v0_tac_018	*	am_tiet_tac	Ông lão ngồi đọc sách bên bếp lửa đỏ rực.
+v0_tac_019	*	am_tiet_tac	Tiếng nhạc phát ra từ chiếc loa nhỏ trên bàn.
+v0_tac_020	*	am_tiet_tac	Sau giờ học, lũ trẻ ra bãi đất trống đá bóng.
+v0_tac_021	*	am_tiet_tac	Bạn nhớ tắt đèn trước khi đi ngủ.
+v0_tac_022	*	am_tiet_tac	Hôm nay trời mát, cả lớp đi dã ngoại ở rừng thông.
+v0_tac_023	*	am_tiet_tac	Nét chữ của em đẹp và rất đều.
+v0_tac_024	*	am_tiet_tac	Mấy chú chim sẻ nhảy lách tách trên mái ngói.
+v0_tac_025	*	am_tiet_tac	Chiếc đồng hồ cũ kêu tích tắc suốt đêm.
+v0_tac_026	*	am_tiet_tac	Lớp học bắt đầu đúng tám giờ sáng.
+v0_tac_027	*	am_tiet_tac	Xôi nếp đậu xanh rắc thêm chút muối.
+v0_tac_028	*	am_tiet_tac	Bức ảnh chụp lúc mặt trời mọc đẹp tuyệt.
+v0_tac_029	*	am_tiet_tac	Mọi việc kết thúc tốt đẹp, ai cũng thấy nhẹ nhõm.
+v0_tac_030	*	am_tiet_tac	Đàn vịt bơi thong thả dọc con kênh nhỏ.
+v0_tac_031	*	am_tiet_tac	Chiếc túi xách màu đen được đặt trên ghế.
+v0_tac_032	*	am_tiet_tac	Tắc đường mất một tiếng, ai cũng mệt rã rời.
+v0_mdn_001	*	mo_dau_nguyen_am	Anh ăn ổi, em uống nước ép.
+v0_mdn_002	*	mo_dau_nguyen_am	Ở làng ấy, ai cũng ăn ở hiền lành.
+v0_mdn_003	*	mo_dau_nguyen_am	Ông ấy uống ít nước quá.
+v0_mdn_004	*	mo_dau_nguyen_am	Em út ăn uống ít, ai cũng lo.
+v0_mdn_005	*	mo_dau_nguyen_am	Ánh đèn ấm áp chiếu ra ô cửa sổ.
+v0_mdn_006	*	mo_dau_nguyen_am	Ăn xong, anh ấy úp ấm trà lên khay.
+v0_mdn_007	*	mo_dau_nguyen_am	Ước gì ông ấy ở lại ăn tối với cả nhà.
+v0_mdn_008	*	mo_dau_nguyen_am	Ồ, ở đây ấm áp thật.
+v0_mdn_009	*	mo_dau_nguyen_am	Âm nhạc ở quán ấy êm ái và dễ nghe.
+v0_mdn_010	*	mo_dau_nguyen_am	Ông Út ôm em bé ra ngoài hiên.
+v0_mdn_011	*	mo_dau_nguyen_am	Anh em ơi, ai muốn uống gì cứ gọi.
+v0_mdn_012	*	mo_dau_nguyen_am	Ổ khoá ở cửa ấy đã cũ lắm rồi.
+v0_mdn_013	*	mo_dau_nguyen_am	Ánh trăng in trên mặt ao yên ả.
+v0_mdn_014	*	mo_dau_nguyen_am	Ít ai ở đây ăn ớt nhiều như anh ấy.
+v0_mdn_015	*	mo_dau_nguyen_am	Em ước được ăn một bữa ở Ấn Độ.
+v0_mdn_016	*	mo_dau_nguyen_am	Ông ấy im lặng, ánh mắt ấm áp.
+v0_mdn_017	*	mo_dau_nguyen_am	Uống ít nước ấm mỗi sáng tốt cho sức khoẻ.
+v0_mdn_018	*	mo_dau_nguyen_am	Ai ăn ổi, ai ăn ớt, ai uống trà?
+v0_mdn_019	*	mo_dau_nguyen_am	Ếch ở ao kêu inh ỏi cả đêm.
+v0_mdn_020	*	mo_dau_nguyen_am	Ông em ươm mấy cây ổi ở góc vườn.
+v0_mdn_021	*	mo_dau_nguyen_am	Ống nước ở nhà em bị rò, ướt cả sàn.
+v0_mdn_022	*	mo_dau_nguyen_am	Áo ấy ướt hết rồi, em ơi.
+v0_mdn_023	*	mo_dau_nguyen_am	Ăn uống điều độ giúp ít ốm đau.
+v0_mdn_024	*	mo_dau_nguyen_am	Em ấy oà khóc khi ôm mẹ ở sân bay.
+v0_mdn_025	*	mo_dau_nguyen_am	Ở đâu ồn ào, ở đó ít ai ngủ yên.
+v0_mdn_026	*	mo_dau_nguyen_am	Yên ổn, ấm êm là ước ao của ai cũng vậy.
+v0_mdn_027	*	mo_dau_nguyen_am	Ướp thịt với ít hành, ít ớt, để một lúc.
+v0_mdn_028	*	mo_dau_nguyen_am	Ông em ưa uống trà ấm ở hiên.
+v0_mdn_029	*	mo_dau_nguyen_am	Ánh nắng ửng hồng ở phía ao làng.
+v0_mdn_030	*	mo_dau_nguyen_am	Anh Út ơi, ăn ít ớt thôi.
+v0_mdn_031	*	mo_dau_nguyen_am	Ước mơ của em là ở gần ông bà.
+v0_mdn_032	*	mo_dau_nguyen_am	Ai ở ngoài ấy, vào uống ấm trà đã.
+v0_tvm_001	bac	tu_vung_mien	Mình đi chợ mua mấy quả dứa với ít lạc nhé.
+v0_tvm_002	bac	tu_vung_mien	Lấy hộ mình cái bát với đôi đũa ở trong tủ.
+v0_tvm_003	bac	tu_vung_mien	Trời sắp mưa đấy, cậu nhớ mang ô theo nhé.
+v0_tvm_004	bac	tu_vung_mien	Vâng ạ, con rót nước cho bố ngay đây.
+v0_tvm_005	bac	tu_vung_mien	Ngõ nhà tớ hẹp lắm, ô tô không vào được đâu.
+v0_tvm_006	bac	tu_vung_mien	Cậu cứ đi thẳng rồi rẽ trái ở ngã tư là đến.
+v0_tvm_007	bac	tu_vung_mien	Hôm qua tớ bị ốm, nằm ở nhà cả ngày.
+v0_tvm_008	bac	tu_vung_mien	Dạo này trông cậu gầy đi nhiều thế.
+v0_tvm_009	bac	tu_vung_mien	Áo phông này đẹp nhưng đắt quá, mình không mua đâu.
+v0_tvm_010	bac	tu_vung_mien	Tối nay lười nấu quá, ăn tạm gói mì tôm thôi.
+v0_tvm_011	bac	tu_vung_mien	Mẹ mình làm nem rán ngon lắm, cậu sang ăn thử đi.
+v0_tvm_012	bac	tu_vung_mien	Bao giờ cậu về quê thì bảo mình một tiếng nhé.
+v0_tvm_013	bac	tu_vung_mien	Vừa nãy có người gọi cậu đấy, mình bảo họ gọi lại sau.
+v0_tvm_014	bac	tu_vung_mien	Cho mình hai cốc trà đá với một đĩa lạc rang nhé.
+v0_tvm_015	bac	tu_vung_mien	Bác gửi xe ở đây rồi đi bộ vào phố cổ cho tiện ạ.
+v0_tvm_016	bac	tu_vung_mien	Thịt lợn hôm nay tươi lắm, chị lấy cho em nửa cân nhé.
+v0_tvm_017	bac	tu_vung_mien	Mùa này ngô nếp luộc ăn dẻo và ngọt lắm.
+v0_tvm_018	bac	tu_vung_mien	Rắc ít vừng lên trên thì món này thơm hơn đấy.
+v0_tvm_019	bac	tu_vung_mien	Hoa quả ngoài chợ hôm nay rẻ thế nhỉ.
+v0_tvm_020	bac	tu_vung_mien	Nhớ đội mũ bảo hiểm vào rồi hẵng đi nhé.
+v0_tvm_021	bac	tu_vung_mien	Lấy cho anh cái thìa với cái dĩa ở ngăn kéo.
+v0_tvm_022	bac	tu_vung_mien	Thế à, sao cậu không bảo mình sớm hơn?
+v0_tvm_023	nam	tu_vung_mien	Tui hổng biết đường, anh chỉ giùm tui nghen.
+v0_tvm_024	nam	tu_vung_mien	Lấy giùm em cái chén với đôi đũa trong tủ nha.
+v0_tvm_025	nam	tu_vung_mien	Trời sắp mưa rồi, nhớ đem dù theo nghen.
+v0_tvm_026	nam	tu_vung_mien	Dạ, con rót cho ba ly nước liền nè.
+v0_tvm_027	nam	tu_vung_mien	Hẻm nhà tui nhỏ xíu, xe hơi chạy vô hổng được đâu.
+v0_tvm_028	nam	tu_vung_mien	Chạy thẳng tới ngã tư rồi quẹo trái là tới.
+v0_tvm_029	nam	tu_vung_mien	Hôm qua tui bị bệnh, nằm nhà nguyên ngày.
+v0_tvm_030	nam	tu_vung_mien	Mấy bữa nay coi bộ em ốm đi nhiều quá.
+v0_tvm_031	nam	tu_vung_mien	Cái áo thun này đẹp mà mắc quá, tui hổng mua đâu.
+v0_tvm_032	nam	tu_vung_mien	Tối nay làm biếng nấu, ăn đỡ mì gói thôi.
+v0_tvm_033	nam	tu_vung_mien	Má tui cuốn chả giò ngon lắm, bữa nào ghé ăn thử nha.
+v0_tvm_034	nam	tu_vung_mien	Chừng nào anh về quê thì kêu tui một tiếng nghen.
+v0_tvm_035	nam	tu_vung_mien	Hồi nãy có người kiếm anh đó, tui kêu họ gọi lại sau.
+v0_tvm_036	nam	tu_vung_mien	Cho tui hai ly trà đá với một dĩa đậu phộng rang nha.
+v0_tvm_037	nam	tu_vung_mien	Anh đậu xe ở đây rồi đi bộ vô chợ cho tiện nghen.
+v0_tvm_038	nam	tu_vung_mien	Thịt heo bữa nay tươi lắm, chị lấy cho em nửa ký nha.
+v0_tvm_039	nam	tu_vung_mien	Bắp nếp luộc mùa này ăn dẻo với ngọt dữ lắm.
+v0_tvm_040	nam	tu_vung_mien	Rắc chút mè lên trên thì món này thơm hơn đó.
+v0_tvm_041	nam	tu_vung_mien	Trái cây ngoài chợ bữa nay rẻ quá trời.
+v0_tvm_042	nam	tu_vung_mien	Nhớ đội nón bảo hiểm vô rồi mới chạy nghen.
+v0_tvm_043	nam	tu_vung_mien	Đưa giùm anh cái muỗng với cái nĩa trong hộc tủ.
+v0_tvm_044	nam	tu_vung_mien	Vậy hả, sao em hổng nói với tui sớm hơn?
+v0_tvm_045	nam	tu_vung_mien	Ổng với bả mới dọn về bển hồi tháng trước.
+v0_sta_001	*	so_va_tieng_anh	Giảm giá 50% cho 100 đơn hàng đầu tiên!
+v0_sta_002	*	so_va_tieng_anh	Tối nay 19h mình sẽ đăng clip mới lên TikTok, nhớ ghé xem nhé.
+v0_sta_003	*	so_va_tieng_anh	Video hôm nay chỉ dài khoảng 3 phút 45 giây thôi mọi người ơi.
+v0_sta_004	*	so_va_tieng_anh	Đừng quên like, share và follow kênh để xem thêm video mới.
+v0_sta_005	*	so_va_tieng_anh	Laptop này nặng 1,2 kg, pin dùng được khoảng 10 tiếng.
+v0_sta_006	*	so_va_tieng_anh	Giá chỉ 299.000đ, freeship toàn quốc.
+v0_sta_007	*	so_va_tieng_anh	Ngày 15/12/2026, cửa hàng mở thêm chi nhánh mới ở Đà Nẵng.
+v0_sta_008	*	so_va_tieng_anh	Nhiệt độ ở Sa Pa sáng nay xuống còn 5°C.
+v0_sta_009	*	so_va_tieng_anh	Livestream bắt đầu lúc 20h tối thứ 7 này.
+v0_sta_010	*	so_va_tieng_anh	Mình vừa unbox chiếc camera hành trình quay được 4K 60fps.
+v0_sta_011	*	so_va_tieng_anh	Kênh vừa cán mốc 10.000 người đăng ký trên YouTube.
+v0_sta_012	*	so_va_tieng_anh	Combo 3 món chỉ còn 99k trong hôm nay.
+v0_sta_013	*	so_va_tieng_anh	Quãng đường từ Hà Nội đến Hải Phòng khoảng 120 km.
+v0_sta_014	*	so_va_tieng_anh	Tai nghe này hỗ trợ Bluetooth 5.3 và sạc nhanh qua cổng USB-C.
+v0_sta_015	*	so_va_tieng_anh	Review thật lòng sau 2 tuần dùng thử chiếc smartwatch này.
+v0_sta_016	*	so_va_tieng_anh	Top 5 quán cà phê đẹp ở Đà Lạt cho chuyến đi cuối tuần.
+v0_sta_017	*	so_va_tieng_anh	Nhập mã SALE20 để được giảm thêm 20%.
+v0_sta_018	*	so_va_tieng_anh	Đơn hàng sẽ được giao trong 2-3 ngày làm việc.
+v0_sta_019	*	so_va_tieng_anh	Công thức này cần 500g bột mì, 2 trứng gà và 200ml sữa tươi.
+v0_sta_020	*	so_va_tieng_anh	Clip này đã đạt 1,5 triệu lượt xem chỉ sau 48 giờ.
+v0_sta_021	*	so_va_tieng_anh	Từ 1/1/2027, ứng dụng sẽ có thêm phiên bản tiếng Anh.
+v0_sta_022	*	so_va_tieng_anh	Điện thoại có màn hình 6,7 inch, RAM 8GB và bộ nhớ 256GB.
+v0_sta_023	*	so_va_tieng_anh	Chạy bộ 5km mỗi sáng giúp mình giảm 3 kg sau 1 tháng.
+v0_sta_024	*	so_va_tieng_anh	Vé máy bay khứ hồi chỉ từ 1.299.000 đồng.
+v0_sta_025	*	so_va_tieng_anh	Hẹn gặp mọi người ở buổi workshop lúc 9:30 sáng Chủ nhật.
+v0_sta_026	*	so_va_tieng_anh	App này cho phép chỉnh video, thêm nhạc và xuất file MP4 rất nhanh.
+v0_sta_027	*	so_va_tieng_anh	Tập 2 của series nấu ăn sẽ lên sóng vào tối thứ 6.
+v0_sta_028	*	so_va_tieng_anh	Wi-Fi ở khách sạn khá mạnh, tốc độ tải khoảng 100 Mbps.
+v0_sta_029	*	so_va_tieng_anh	Shop mở cửa từ 8h đến 22h, kể cả cuối tuần.
+v0_sta_030	*	so_va_tieng_anh	Mình đã test con chip AI mới này suốt 72 giờ liền.
+v0_sta_031	*	so_va_tieng_anh	Lượng mưa tháng 9 tăng khoảng 15% so với cùng kỳ năm ngoái.
+v0_sta_032	*	so_va_tieng_anh	Chiếc áo hoodie này có 4 màu, size từ S đến XL.
+v0_sta_033	*	so_va_tieng_anh	Bài viết có 3 mẹo nhỏ giúp bạn quay vlog bằng điện thoại đẹp hơn.
+v0_sta_034	*	so_va_tieng_anh	Tỉ số chung cuộc là 2-1, đội chủ nhà giành vé vào vòng trong.
+v0_sta_035	*	so_va_tieng_anh	Pha 1 gói cà phê với 150ml nước nóng khoảng 90 độ.
+v0_hct_001	*	cau_hoi_cam_than	Bạn đã ăn cơm chưa?
+v0_hct_002	*	cau_hoi_cam_than	Hôm nay trời đẹp quá!
+v0_hct_003	*	cau_hoi_cam_than	Món này được nấu như thế nào mà ngon đến vậy?
+v0_hct_004	*	cau_hoi_cam_than	Ôi, cảnh ở đây đẹp quá!
+v0_hct_005	*	cau_hoi_cam_than	Chuyến tàu tiếp theo khởi hành lúc mấy giờ?
+v0_hct_006	*	cau_hoi_cam_than	Tại sao bầu trời lại có màu xanh?
+v0_hct_007	*	cau_hoi_cam_than	Thật không thể tin được!
+v0_hct_008	*	cau_hoi_cam_than	Bạn có muốn thử món mới này không?
+v0_hct_009	*	cau_hoi_cam_than	Chúc mừng sinh nhật, chúc bạn luôn vui khoẻ!
+v0_hct_010	*	cau_hoi_cam_than	Ai là người đã để quên chiếc ví ở đây?
+v0_hct_011	*	cau_hoi_cam_than	Cảm ơn mọi người rất nhiều!
+v0_hct_012	*	cau_hoi_cam_than	Từ đây ra ga còn bao xa nữa?
+v0_hct_013	*	cau_hoi_cam_than	Bạn thích đi biển hay đi núi hơn?
+v0_hct_014	*	cau_hoi_cam_than	Tuyệt vời, chúng ta làm được rồi!
+v0_hct_015	*	cau_hoi_cam_than	Cẩn thận, đường trơn lắm!
+v0_hct_016	*	cau_hoi_cam_than	Em có biết đường đến bưu điện không?
+v0_hct_017	*	cau_hoi_cam_than	Hôm nay bạn về sớm à?
+v0_hct_018	*	cau_hoi_cam_than	Trời ơi, mưa to quá!
+v0_hct_019	*	cau_hoi_cam_than	Khi nào quán mở cửa trở lại?
+v0_hct_020	*	cau_hoi_cam_than	Bạn đã từng thử nhảy dù chưa?
+v0_hct_021	*	cau_hoi_cam_than	Nhanh lên, xe sắp chạy rồi!
+v0_hct_022	*	cau_hoi_cam_than	Chiếc váy này giá bao nhiêu?
+v0_hct_023	*	cau_hoi_cam_than	Món quà này dành cho tôi thật sao?
+v0_hct_024	*	cau_hoi_cam_than	Hay quá, kể tiếp đi!
+v0_hct_025	*	cau_hoi_cam_than	Bạn đi một mình hay đi cùng gia đình?
+v0_hct_026	*	cau_hoi_cam_than	Thôi chết, tôi quên mang chìa khoá rồi!
+v0_hct_027	*	cau_hoi_cam_than	Đây có phải là chuyến xe cuối cùng trong ngày không?
+v0_hct_028	*	cau_hoi_cam_than	Cố lên, chỉ còn một chút nữa thôi!
+v0_hct_029	*	cau_hoi_cam_than	Ngày mai bạn có rảnh không?
+v0_hct_030	*	cau_hoi_cam_than	Ồ, hoá ra là bạn!
+v0_hct_031	*	cau_hoi_cam_than	Ai muốn ăn kem nào?
+v0_hct_032	*	cau_hoi_cam_than	Lần sau chúng ta lại đi cùng nhau được không?
+v0_dai_001	*	doan_dai	Hồi còn nhỏ, mỗi dịp hè tôi lại về quê sống với ông bà. Nhà ông bà nằm cuối con đường đất, trước sân có một cây khế già và một giàn mướp xanh mát. Sáng nào ông cũng dậy từ rất sớm, pha một ấm trà rồi ngồi ở hiên nghe tiếng chim hót. Bà thì ra vườn hái rau, nhặt mấy quả trứng gà còn ấm trong ổ rơm. Tôi thường chạy theo bà, tay cầm chiếc rổ nhỏ, chân dính đầy đất mà vẫn cười khúc khích. Buổi chiều, lũ trẻ trong xóm rủ nhau ra bờ sông thả diều. Gió thổi mạnh, những cánh diều bay cao tít, chao qua chao lại trên nền trời xanh. Khi mặt trời lặn, khói bếp bắt đầu bay lên từ từng mái nhà, và tiếng bà gọi về ăn cơm vang khắp xóm. Bữa cơm chỉ có rau luộc, cá kho và nồi canh cua, nhưng tôi nhớ mãi vị ngon ấy. Bây giờ ông bà đã già, căn nhà cũng được sửa lại, nhưng mỗi lần về quê, tôi vẫn đứng rất lâu dưới gốc cây khế, nghe lòng mình bình yên lạ thường.
+v0_dai_002	*	doan_dai	Hôm nay tôi chia sẻ cảm nhận sau một tháng dùng chiếc ấm đun nước siêu tốc mới mua. Về thiết kế, ấm có thân bằng thép không gỉ, tay cầm bọc nhựa chống nóng nên cầm rất chắc tay. Nắp ấm mở bằng một nút bấm nhỏ, đóng lại kín và không bị rò hơi. Dung tích vừa đủ cho một gia đình bốn người pha trà hoặc pha sữa cho em bé. Điểm tôi thích nhất là tốc độ đun. Chỉ khoảng năm phút là nước đã sôi, ấm tự ngắt điện và đèn báo chuyển sang màu xanh. Khi đun, máy chạy khá êm, không phát ra tiếng rít khó chịu như chiếc ấm cũ của tôi. Tuy vậy, sản phẩm vẫn có vài điểm chưa hoàn hảo. Thân ấm khá nóng khi vừa đun xong, nên bạn nhớ để xa tầm tay trẻ nhỏ. Dây điện hơi ngắn, nếu ổ cắm ở xa thì sẽ hơi bất tiện. Ngoài ra, sau vài tuần, đáy ấm có một lớp cặn trắng, cần rửa bằng giấm hoặc chanh để sạch lại như mới. Nhìn chung, với mức giá phải chăng, đây là một lựa chọn đáng cân nhắc cho những ai cần một chiếc ấm bền, nhanh và dễ dùng. Nếu bạn đã dùng thử, hãy chia sẻ cảm nhận của mình để mọi người cùng tham khảo.
+v0_dai_003	*	doan_dai	Sau gần năm tiếng ngồi xe, chúng tôi cũng đến thị trấn nhỏ nằm giữa những dãy núi mờ sương. Không khí ở đây mát lạnh, chỉ cần hít một hơi là thấy cả người tỉnh táo. Chiều đầu tiên, cả nhóm thuê xe máy đi dạo quanh hồ. Mặt hồ phẳng lặng, phản chiếu những rặng thông xanh và mấy đám mây trắng bồng bềnh. Ven đường có nhiều sạp bán khoai lang nướng và sữa đậu nành nóng. Chúng tôi dừng lại, ngồi trên những chiếc ghế nhựa thấp, vừa ăn vừa ngắm hoàng hôn. Tối đến, chợ đêm sáng đèn, người bán hàng mời chào đủ loại áo len, khăn quàng và mứt dâu. Sáng hôm sau, chúng tôi dậy thật sớm để leo lên đỉnh đồi ngắm bình minh. Đường lên dốc và trơn, ai cũng thở hổn hển, nhưng khi mặt trời nhô lên khỏi biển mây, mọi mệt mỏi như tan biến. Nếu bạn đang tìm một nơi để nghỉ ngơi vài ngày, tránh xa tiếng ồn của thành phố, thì đây chắc chắn là điểm đến đáng để thử. Chỉ cần nhớ mang theo áo ấm, giày đi bộ và một tâm hồn sẵn sàng tận hưởng.
+v0_dai_004	*	doan_dai	Sáng nay, hội chợ nông sản cuối năm đã chính thức khai mạc tại nhà văn hoá trung tâm của huyện. Năm nay, hội chợ quy tụ hơn một trăm gian hàng đến từ nhiều tỉnh, giới thiệu các sản phẩm như gạo thơm, mật ong, trà xanh, nấm khô và các loại bánh truyền thống. Theo ban tổ chức, điểm mới của năm nay là khu trải nghiệm dành cho thiếu nhi, nơi các em có thể tự tay gói bánh, nặn tượng đất và tìm hiểu cách trồng rau sạch. Ngay trong buổi sáng đầu tiên, rất đông người dân đã đến tham quan và mua sắm. Nhiều tiểu thương cho biết sức mua tăng rõ so với năm trước, nhất là các mặt hàng làm quà biếu dịp Tết. Bên cạnh hoạt động mua bán, hội chợ còn có các buổi biểu diễn văn nghệ, thi nấu ăn và chia sẻ kinh nghiệm làm nông nghiệp hữu cơ. Hội chợ kéo dài trong năm ngày và mở cửa từ sáng đến tối. Ban tổ chức khuyến khích người dân đi xe buýt hoặc xe đạp để giảm ùn tắc ở khu vực xung quanh.
+v0_dai_005	*	doan_dai	Hôm nay mình sẽ hướng dẫn mọi người nấu món canh bí đỏ nấu tôm. Đầu tiên, bạn chọn một quả bí đỏ già, vỏ cứng, ruột vàng sậm. Gọt vỏ, bỏ hạt rồi cắt bí thành từng miếng vừa ăn. Tôm tươi đem bóc vỏ, bỏ chỉ đen trên lưng, rửa sạch và để ráo. Tiếp theo, bạn băm nhỏ tôm, ướp với một chút muối, tiêu và hành tím trong khoảng mười phút. Bắc nồi lên bếp, cho một ít dầu ăn, phi thơm hành rồi cho tôm vào xào nhanh tay đến khi tôm chuyển sang màu hồng. Sau đó, đổ nước vào nồi, đun sôi rồi thả bí đỏ vào. Bạn nhớ hạ nhỏ lửa, nấu thêm chừng mười lăm phút cho bí chín mềm nhưng không bị nát. Trong lúc chờ, hãy rửa sạch và cắt nhỏ một ít rau thơm cùng hành lá. Khi bí đã chín, nêm lại cho vừa ăn, tắt bếp và rắc rau thơm lên trên. Món canh có màu vàng đẹp mắt, vị ngọt tự nhiên của bí hoà với vị đậm đà của tôm, ăn kèm cơm nóng thì không gì bằng. Đây là món ăn đơn giản, rẻ và rất bổ dưỡng, phù hợp cho cả trẻ nhỏ lẫn người lớn tuổi.
+v0_dai_006	*	doan_dai	Bạn thường xuyên phải mang theo máy tính, cục sạc, sổ tay và cả một chai nước mỗi ngày? Chiếc ba lô mới của chúng tôi được thiết kế dành riêng cho những người luôn di chuyển. Lớp vải bên ngoài chống thấm nước, giúp đồ đạc bên trong khô ráo kể cả khi bạn bất ngờ gặp mưa. Ngăn chính rộng rãi, có lớp đệm dày để bảo vệ máy tính khỏi va đập. Hai ngăn bên hông vừa vặn với bình nước giữ nhiệt. Quai đeo được may chắc chắn, có đệm êm, giúp vai không bị mỏi dù đi cả ngày. Đặc biệt, phía sau lưng có một ngăn khoá kín để cất ví và giấy tờ quan trọng, tránh bị móc túi ở nơi đông người. Sản phẩm có bốn màu trang nhã, dễ phối với nhiều phong cách, từ đi làm, đi học cho đến đi du lịch. Từ nay đến hết tháng, khi đặt mua, bạn sẽ được tặng kèm một túi đựng đồ nhỏ xinh và được đổi trả miễn phí trong vòng bảy ngày. Đừng chần chừ nữa, hãy để chiếc ba lô này đồng hành cùng bạn trên mọi chặng đường.
+v0_dai_007	bac	doan_dai	Sáng nào mình cũng dậy sớm, đạp xe ra đầu ngõ ăn bát phở của bác Hoà. Quán nhỏ thôi, chỉ có mấy cái bàn thấp kê sát vỉa hè, nhưng lúc nào cũng đông khách. Bác Hoà múc nước dùng nóng hổi, thả vào mấy lát thịt bò thái mỏng rồi rắc hành lên trên, thơm nức cả một góc phố. Ăn xong, mình hay sang hàng nước bên cạnh uống cốc trà đá, ngồi nghe các cụ bàn chuyện thời tiết. Hôm nay trời chuyển lạnh, cụ ông ngồi cạnh bảo mình nhớ mặc thêm áo, không thì dễ ốm lắm đấy. Mình cười, bảo vâng ạ, rồi xin thêm đĩa lạc rang cho vui miệng. Trên đường đi làm, mình rẽ qua chợ mua mấy quả dứa với một ít hoa quả để chiều mang sang biếu bà. Bà mình năm nay đã ngoài tám mươi, nhưng vẫn khoẻ, sáng nào cũng ra vườn nhặt cỏ, tưới rau. Mỗi lần mình sang, bà lại hỏi dạo này có hay về muộn không, có ăn uống đầy đủ không. Nghe bà hỏi thế, mình thấy lòng ấm hẳn lên. Hà Nội những ngày đầu đông cứ nhẹ nhàng như thế, chẳng có gì to tát, mà đủ làm người ta thương.
+v0_dai_008	nam	doan_dai	Sáng sớm, má tui đã kêu tui dậy đi chợ với bả. Chợ nằm ngay đầu hẻm, mới năm giờ mà người ta bày hàng đông nghẹt. Má ghé sạp rau trước, lựa mấy bó rau muống, rau thơm với một trái thơm thiệt tươi để nấu canh chua. Cô bán rau quen má lâu rồi, thấy tui là cười, nói bữa nay thằng nhỏ cũng chịu dậy sớm đi chợ nữa hả. Tui mắc cỡ, đứng gãi đầu hổng biết nói gì. Rồi má dắt tui qua dãy bán cá, kiếm một con cá lóc còn quẫy đành đạch. Ông bán cá làm cá lẹ lắm, chưa tới hai phút là xong. Trên đường về, má mua cho tui ổ bánh mì nóng giòn với ly cà phê sữa đá. Hai má con ngồi ăn dưới gốc cây me trước nhà, nghe tiếng xe chạy ngoài đường càng lúc càng đông. Má nói hồi nhỏ má cũng theo bà ngoại đi chợ vầy nè, mua đồ xong là được thưởng một chén chè. Tui nghe mà thấy thương má quá trời. Mấy bữa nay đi làm bận rộn, tui ít khi ở nhà, nên mấy buổi sáng giản dị như vầy làm tui nhớ hoài.

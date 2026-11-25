@@ -1,0 +1,17 @@
+# Schema manifest (đặc tả mục 4) và chia tập (mục 6, bước 12).
+sample_rate: 48000
+speaker_id_pattern: '^[a-z]+_[a-z0-9]+$'   # vùng_người, ví dụ hn_f01
+utterance_digits: 6                         # id = <speaker_id>_<6 chữ số>
+duration_s:                                 # ngoài khoảng này thì qc_status không được là pass
+  min: 1.0
+  max: 15.0
+max_asr_cer: 0.05                           # CER > 5% thì không được pass (đặc tả mục 6, bước 5)
+# Ngưỡng SNR cho câu pass lấy từ qa.yaml (qa.min_snr_db), không ghi lại ở đây.
+# Giấy phép được phép nằm trong tập train (không bao giờ train trên dữ liệu không thương mại).
+train_licenses:
+  - vietvoice-commercial-v1
+split:
+  train: 0.94
+  val: 0.03
+  test: 0.03
+  seed: 20260101

@@ -1,0 +1,355 @@
+# Ca kiểm tra chuẩn hoá văn bản theo vùng — mỗi dòng là MỘT câu vào và đầu ra đúng từng ký tự.
+# Chủ dự án là người quyết định giá trị đúng: sửa, thêm, xoá dòng ở đây, test tự đọc lại.
+# Luật nằm ở src/vietvoice/text/normalize_data/ (số theo vùng, viết tắt, đơn vị, tên chữ cái, ngữ cảnh).
+# Cột: dialect <tab> input <tab> expected <tab> category <tab> rule
+# dialect: bac | nam | * (cả hai vùng cùng kết quả). Ca khác nhau giữa hai vùng ghi hai dòng bac, nam.
+# input: văn bản gốc; "\n" là xuống dòng. Không dùng dấu nháy để bao chuỗi.
+# expected: chữ thường NFC, cách nhau một dấu cách, chỉ giữ , . ? ! (dính vào từ trước); "-" là chuỗi rỗng.
+# category: so_dem so_thu_tu thap_phan phan_tram dien_thoai ngay gio tien_te don_vi viet_tat chu_hoa
+#           so_la_ma mo_ho url_email ngoai_lai ky_hieu dau_cau unicode hon_hop
+#           (url_email, ngoai_lai còn từ Latin nên không kiểm G2P; G2P đọc qua từ điển ngoại lệ).
+# rule: lý do. Dòng có chữ NHÁP là cách đọc agent chọn tạm (theo giọng phát thanh phổ biến), cần duyệt.
+dialect	input	expected	category	rule
+*	0	không	so_dem	số không
+*	1	một	so_dem	chữ số đơn
+*	5	năm	so_dem	chữ số đơn
+*	10	mười	so_dem	10 là mười
+*	11	mười một	so_dem	sau mười, 1 vẫn là một
+*	14	mười bốn	so_dem	sau mười, 4 vẫn là bốn
+*	15	mười lăm	so_dem	sau mười, 5 là lăm
+*	20	hai mươi	so_dem	hàng chục từ 2 là mươi
+*	21	hai mươi mốt	so_dem	sau mươi, 1 là mốt
+*	24	hai mươi tư	so_dem	sau mươi, 4 là tư (cả hai vùng, NHÁP: Nam cũng hay nói bốn)
+*	25	hai mươi lăm	so_dem	sau mươi, 5 là lăm
+*	55	năm mươi lăm	so_dem	mươi + lăm
+*	99	chín mươi chín	so_dem	hàng chục thường
+*	100	một trăm	so_dem	tròn trăm
+bac	101	một trăm linh một	so_dem	hàng chục 0: Bắc đọc linh
+nam	101	một trăm lẻ một	so_dem	hàng chục 0: Nam đọc lẻ
+bac	105	một trăm linh năm	so_dem	linh; sau linh 5 vẫn là năm
+nam	105	một trăm lẻ năm	so_dem	lẻ; sau lẻ 5 vẫn là năm
+bac	104	một trăm linh bốn	so_dem	sau linh 4 là bốn
+nam	104	một trăm lẻ bốn	so_dem	sau lẻ 4 là bốn
+*	110	một trăm mười	so_dem	hàng chục 1
+*	115	một trăm mười lăm	so_dem	mười lăm
+*	121	một trăm hai mươi mốt	so_dem	mốt
+bac	1000	một nghìn	so_dem	Bắc: nghìn
+nam	1000	một ngàn	so_dem	Nam: ngàn
+bac	1005	một nghìn không trăm linh năm	so_dem	nhóm sau nghìn đọc đủ không trăm
+nam	1005	một ngàn không trăm lẻ năm	so_dem	nhóm sau ngàn đọc đủ không trăm
+bac	2.500	hai nghìn năm trăm	so_dem	dấu chấm + đúng 3 chữ số là phân cách nghìn
+nam	2.500	hai ngàn năm trăm	so_dem	dấu chấm + đúng 3 chữ số là phân cách nghìn
+bac	1.050	một nghìn không trăm năm mươi	so_dem	không trăm
+nam	1.050	một ngàn không trăm năm mươi	so_dem	không trăm
+bac	10.000	mười nghìn	so_dem	chục nghìn
+nam	10.000	mười ngàn	so_dem	chục ngàn
+bac	2.024	hai nghìn không trăm hai mươi tư	so_dem	tư sau mươi
+nam	2.024	hai ngàn không trăm hai mươi tư	so_dem	tư sau mươi
+bac	999.999	chín trăm chín mươi chín nghìn chín trăm chín mươi chín	so_dem	nhóm nghìn đầy đủ
+nam	999.999	chín trăm chín mươi chín ngàn chín trăm chín mươi chín	so_dem	nhóm ngàn đầy đủ
+bac	120.000 người	một trăm hai mươi nghìn người	so_dem	số + danh từ
+nam	120.000 người	một trăm hai mươi ngàn người	so_dem	số + danh từ
+*	1.000.000	một triệu	so_dem	tròn triệu
+bac	1.000.005	một triệu không trăm linh năm	so_dem	NHÁP: bỏ nhóm nghìn rỗng, nhóm sau đọc đủ không trăm
+nam	1.000.005	một triệu không trăm lẻ năm	so_dem	NHÁP: bỏ nhóm ngàn rỗng, nhóm sau đọc đủ không trăm
+bac	2.050.000	hai triệu không trăm năm mươi nghìn	so_dem	nhóm nghìn sau triệu đọc đủ không trăm
+nam	2.050.000	hai triệu không trăm năm mươi ngàn	so_dem	nhóm ngàn sau triệu đọc đủ không trăm
+*	1.200.000.000	một tỷ hai trăm triệu	so_dem	tỷ
+*	3.000.000.000	ba tỷ	so_dem	tròn tỷ
+bac	5.000.000.000.000	năm nghìn tỷ	so_dem	trên tỷ: nghìn tỷ
+nam	5.000.000.000.000	năm ngàn tỷ	so_dem	trên tỷ: ngàn tỷ
+*	1,000,000	một triệu	so_dem	kiểu Anh: từ hai dấu phẩy nghìn trở lên là phân cách nghìn
+*	Có 3 người.	có ba người.	so_dem	số trong câu, giữ dấu chấm cuối câu
+*	-5	âm năm	so_dem	dấu trừ trước số là âm
+*	05 người	năm người	so_dem	số 0 đầu, dài tối đa 2 chữ số: đọc giá trị
+*	007	không không bảy	so_dem	số 0 đầu, từ 3 chữ số: đọc từng chữ số
+*	1234567890123456789012	một hai ba bốn năm sáu bảy tám chín không một hai ba bốn năm sáu bảy tám chín không một hai	so_dem	dài hơn numbers.max_digits: đọc từng chữ số
+*	thứ 2	thứ hai	so_thu_tu	thứ + số
+*	lần thứ 1	lần thứ nhất	so_thu_tu	thứ 1 là thứ nhất
+*	thứ 4	thứ tư	so_thu_tu	thứ 4 là thứ tư
+*	Thứ 5 tuần sau	thứ năm tuần sau	so_thu_tu	thứ năm
+*	thứ 7	thứ bảy	so_thu_tu	thứ bảy
+*	hạng thứ 14	hạng thứ mười bốn	so_thu_tu	chỉ 1 và 4 đổi cách đọc
+*	lần thứ 21	lần thứ hai mươi mốt	so_thu_tu	21 đọc như số đếm
+*	2,5	hai phẩy năm	thap_phan	dấu phẩy là dấu thập phân
+*	3,14	ba phẩy mười bốn	thap_phan	phần thập phân tới 3 chữ số đọc như số
+*	2,05	hai phẩy không năm	thap_phan	số 0 đầu phần thập phân đọc là không
+*	0,5	không phẩy năm	thap_phan	không phẩy
+*	2,15	hai phẩy mười lăm	thap_phan	mười lăm
+*	9,99	chín phẩy chín mươi chín	thap_phan	phần thập phân 2 chữ số
+*	0,125	không phẩy một trăm hai mươi lăm	thap_phan	phần thập phân 3 chữ số
+*	3,14159	ba phẩy một bốn một năm chín	thap_phan	phần thập phân dài hơn 3 chữ số: đọc từng chữ số
+*	-2,5	âm hai phẩy năm	thap_phan	số âm thập phân
+*	2.5	hai chấm năm	thap_phan	NHÁP: dấu chấm không theo sau đúng 3 chữ số, không có đơn vị: đọc chấm
+*	phiên bản 2.5.1	phiên bản hai chấm năm chấm một	thap_phan	số phiên bản
+*	phiên bản 3.12	phiên bản ba chấm mười hai	thap_phan	số phiên bản
+*	1.5 kg	một phẩy năm ki lô gam	thap_phan	NHÁP: dấu chấm có đơn vị theo sau: đọc phẩy
+*	2.5 triệu	hai phẩy năm triệu	thap_phan	NHÁP: dấu chấm trước triệu, tỷ, nghìn: đọc phẩy
+bac	2.500,5	hai nghìn năm trăm phẩy năm	thap_phan	chấm phân cách nghìn, phẩy thập phân
+nam	2.500,5	hai ngàn năm trăm phẩy năm	thap_phan	chấm phân cách ngàn, phẩy thập phân
+*	50%	năm mươi phần trăm	phan_tram	phần trăm
+*	2,5%	hai phẩy năm phần trăm	phan_tram	thập phân + phần trăm
+*	100 %	một trăm phần trăm	phan_tram	có dấu cách trước %
+*	3-4%	ba đến bốn phần trăm	phan_tram	khoảng + phần trăm
+*	10%-20%	mười phần trăm đến hai mươi phần trăm	phan_tram	gạch sau % là khoảng, không phải dấu âm
+*	1.5%	một phẩy năm phần trăm	phan_tram	dấu chấm trước % đọc phẩy
+*	tăng 15%.	tăng mười lăm phần trăm.	phan_tram	cuối câu
+*	0912345678	không chín một hai, ba bốn năm, sáu bảy tám	dien_thoai	10 số liền: nhóm 4-3-3, đọc từng chữ số
+*	0912 345 678	không chín một hai, ba bốn năm, sáu bảy tám	dien_thoai	giữ nhóm của văn bản
+*	0912.345.678	không chín một hai, ba bốn năm, sáu bảy tám	dien_thoai	nhóm cách bằng dấu chấm
+*	0912-345-678	không chín một hai, ba bốn năm, sáu bảy tám	dien_thoai	nhóm cách bằng gạch ngang
+*	+84 912 345 678	cộng tám bốn, chín một hai, ba bốn năm, sáu bảy tám	dien_thoai	mã nước +84
+*	+84912345678	cộng tám bốn, chín một hai, ba bốn năm, sáu bảy tám	dien_thoai	+84 + 9 số liền: nhóm 3-3-3
+*	(028) 3822 1234	không hai tám, ba tám hai hai, một hai ba bốn	dien_thoai	máy bàn có mã vùng trong ngoặc
+*	02838221234	không hai tám, ba tám hai hai, một hai ba bốn	dien_thoai	11 số liền: nhóm 3-4-4
+*	1900 1234	một chín không không, một hai ba bốn	dien_thoai	tổng đài 1900
+*	Gọi 0987654321 nhé.	gọi không chín tám bảy, sáu năm bốn, ba hai một nhé.	dien_thoai	số điện thoại trong câu
+*	SĐT: 0912345678	số điện thoại, không chín một hai, ba bốn năm, sáu bảy tám	dien_thoai	dấu hai chấm thành phẩy
+bac	15/1/2027	ngày mười lăm tháng một năm hai nghìn không trăm hai mươi bảy	ngay	ngày/tháng/năm, thêm chữ ngày
+nam	15/1/2027	ngày mười lăm tháng một năm hai ngàn không trăm hai mươi bảy	ngay	ngày/tháng/năm, thêm chữ ngày
+bac	ngày 15-01-2027	ngày mười lăm tháng một năm hai nghìn không trăm hai mươi bảy	ngay	đã có chữ ngày thì không thêm
+nam	ngày 15-01-2027	ngày mười lăm tháng một năm hai ngàn không trăm hai mươi bảy	ngay	đã có chữ ngày thì không thêm
+bac	15.01.2027	ngày mười lăm tháng một năm hai nghìn không trăm hai mươi bảy	ngay	ngày cách bằng dấu chấm
+nam	15.01.2027	ngày mười lăm tháng một năm hai ngàn không trăm hai mươi bảy	ngay	ngày cách bằng dấu chấm
+bac	2027-01-15	ngày mười lăm tháng một năm hai nghìn không trăm hai mươi bảy	ngay	kiểu ISO năm-tháng-ngày
+nam	2027-01-15	ngày mười lăm tháng một năm hai ngàn không trăm hai mươi bảy	ngay	kiểu ISO năm-tháng-ngày
+bac	tháng 1/2027	tháng một năm hai nghìn không trăm hai mươi bảy	ngay	tháng/năm, đã có chữ tháng
+nam	tháng 1/2027	tháng một năm hai ngàn không trăm hai mươi bảy	ngay	tháng/năm, đã có chữ tháng
+bac	4/2027	tháng tư năm hai nghìn không trăm hai mươi bảy	ngay	tháng/năm 4 chữ số; tháng 4 là tháng tư
+nam	4/2027	tháng tư năm hai ngàn không trăm hai mươi bảy	ngay	tháng/năm 4 chữ số; tháng 4 là tháng tư
+*	ngày 4/4	ngày bốn tháng tư	ngay	ngày 4 là bốn, tháng 4 là tư
+*	Sáng 15/1, trời mưa.	sáng ngày mười lăm tháng một, trời mưa.	ngay	NHÁP: sáng là ngữ cảnh ngày; vẫn thêm chữ ngày
+*	hôm 2/9	hôm hai tháng chín	ngay	sau hôm không thêm chữ ngày
+*	mùng 1/1	mùng một tháng một	ngay	sau mùng không thêm chữ ngày; NHÁP: chưa thêm mồng/mùng cho ngày 1–10
+*	tháng 4	tháng tư	ngay	tháng 4 là tháng tư
+*	tháng 12	tháng mười hai	ngay	tháng mười hai
+*	ngày 31/12	ngày ba mươi mốt tháng mười hai	ngay	ngày/tháng
+bac	năm 2000	năm hai nghìn	ngay	năm đọc như số đếm
+nam	năm 2000	năm hai ngàn	ngay	năm đọc như số đếm
+bac	năm 1975	năm một nghìn chín trăm bảy mươi lăm	ngay	năm đọc như số đếm
+nam	năm 1975	năm một ngàn chín trăm bảy mươi lăm	ngay	năm đọc như số đếm
+*	14h30	mười bốn giờ ba mươi phút	gio	giờ viết kiểu h
+*	14:30	mười bốn giờ ba mươi phút	gio	giờ viết kiểu hai chấm
+*	8h	tám giờ	gio	giờ chẵn
+*	8h sáng	tám giờ sáng	gio	giờ chẵn trong câu
+*	9:05	chín giờ năm phút	gio	phút có số 0 đầu
+*	14h00	mười bốn giờ	gio	không đọc không phút
+*	14g30	mười bốn giờ ba mươi phút	gio	giờ viết kiểu g
+*	07:15:30	bảy giờ mười lăm phút ba mươi giây	gio	giờ phút giây
+*	lúc 21h15.	lúc hai mươi mốt giờ mười lăm phút.	gio	giờ cuối câu
+*	2h30p	hai giờ ba mươi phút	gio	chữ p sau phút
+*	Mở cửa 8h-17h	mở cửa tám giờ đến mười bảy giờ	gio	khoảng giờ kiểu h
+*	8h30-17h	tám giờ ba mươi phút đến mười bảy giờ	gio	khoảng giờ có phút
+*	8:00-17:00	tám giờ đến mười bảy giờ	gio	khoảng giờ kiểu hai chấm
+bac	50.000đ	năm mươi nghìn đồng	tien_te	đ là đồng
+nam	50.000đ	năm mươi ngàn đồng	tien_te	đ là đồng
+bac	50.000 đ	năm mươi nghìn đồng	tien_te	có dấu cách trước đ
+nam	50.000 đ	năm mươi ngàn đồng	tien_te	có dấu cách trước đ
+bac	50k	năm mươi nghìn	tien_te	k là nghìn, không thêm đồng
+nam	50k	năm mươi ngàn	tien_te	k là ngàn, không thêm đồng
+bac	500K	năm trăm nghìn	tien_te	K hoa cũng là nghìn
+nam	500K	năm trăm ngàn	tien_te	K hoa cũng là ngàn
+*	2tr	hai triệu	tien_te	tr là triệu
+*	2,5tr	hai phẩy năm triệu	tien_te	thập phân + tr
+*	1,5 tỷ	một phẩy năm tỷ	tien_te	tỷ là chữ, giữ nguyên
+*	$50	năm mươi đô la	tien_te	$ đứng trước số
+*	50$	năm mươi đô la	tien_te	$ đứng sau số
+*	$1.5	một phẩy năm đô la	tien_te	dấu chấm có tiền tệ: đọc phẩy
+*	$5-$10	năm đô la đến mười đô la	tien_te	tiền tệ ở cả hai đầu khoảng
+*	$5-10	năm đến mười đô la	tien_te	tiền tệ một đầu: đọc sau số cuối
+bac	1tr5	một triệu năm trăm nghìn	tien_te	NHÁP: 1tr5 là 1.500.000, đọc đủ (không đọc một triệu rưỡi)
+nam	1tr5	một triệu năm trăm ngàn	tien_te	NHÁP: 1tr5 là 1.500.000, đọc đủ
+bac	2tr35	hai triệu ba trăm năm mươi nghìn	tien_te	NHÁP: 2tr35 là 2.350.000
+nam	2tr35	hai triệu ba trăm năm mươi ngàn	tien_te	NHÁP: 2tr35 là 2.350.000
+bac	2k5	hai nghìn năm trăm	tien_te	NHÁP: 2k5 là 2.500
+nam	2k5	hai ngàn năm trăm	tien_te	NHÁP: 2k5 là 2.500
+bac	giá 4K	giá bốn nghìn	tien_te	NHÁP: sau từ giá, 4K là tiền
+nam	giá 4K	giá bốn ngàn	tien_te	NHÁP: sau từ giá, 4K là tiền
+*	100 USD	một trăm đô la mỹ	tien_te	NHÁP: USD đọc đô la mỹ
+bac	100.000 VND	một trăm nghìn việt nam đồng	tien_te	NHÁP: VND đọc việt nam đồng
+nam	100.000 VND	một trăm ngàn việt nam đồng	tien_te	NHÁP: VND đọc việt nam đồng
+bac	200.000 VNĐ	hai trăm nghìn việt nam đồng	tien_te	NHÁP: VNĐ đọc việt nam đồng
+nam	200.000 VNĐ	hai trăm ngàn việt nam đồng	tien_te	NHÁP: VNĐ đọc việt nam đồng
+*	€20	hai mươi ơ rô	tien_te	NHÁP: euro đọc ơ rô
+bac	giá 1.200.000đ	giá một triệu hai trăm nghìn đồng	tien_te	giá tiền trong câu
+nam	giá 1.200.000đ	giá một triệu hai trăm ngàn đồng	tien_te	giá tiền trong câu
+*	5km	năm ki lô mét	don_vi	km
+*	5 km	năm ki lô mét	don_vi	có dấu cách
+*	60km/h	sáu mươi ki lô mét trên giờ	don_vi	km/h
+*	70kg	bảy mươi ki lô gam	don_vi	kg
+*	100m²	một trăm mét vuông	don_vi	m²
+*	100m2	một trăm mét vuông	don_vi	m2 viết thường
+*	50m³	năm mươi mét khối	don_vi	m³
+*	30°C	ba mươi độ xê	don_vi	độ C
+*	-5°C	âm năm độ xê	don_vi	nhiệt độ âm
+*	15cm	mười lăm xen ti mét	don_vi	cm
+*	10mm	mười mi li mét	don_vi	mm
+*	500ml	năm trăm mi li lít	don_vi	ml
+*	2l	hai lít	don_vi	l
+*	200g	hai trăm gam	don_vi	g
+*	3 ha	ba héc ta	don_vi	ha
+*	220V	hai trăm hai mươi vôn	don_vi	V
+*	100W	một trăm oát	don_vi	W
+*	64GB	sáu mươi tư gi ga bai	don_vi	NHÁP: GB đọc gi ga bai
+*	5m	năm mét	don_vi	m sau số là mét
+*	10s	mười giây	don_vi	s sau số là giây
+*	3-4 km	ba đến bốn ki lô mét	don_vi	khoảng + đơn vị
+*	5kg-10kg	năm ki lô gam đến mười ki lô gam	don_vi	đơn vị ở cả hai đầu khoảng
+*	còn mấy km nữa	còn mấy ki lô mét nữa	don_vi	đơn vị đứng riêng (không nguyên âm, có trong units.tsv)
+*	đội 2 V	đội hai vê	don_vi	đơn vị một chữ cái phải viết liền số; có dấu cách thì là chữ cái
+*	quay được 4K 60fps	quay được bốn ca sáu mươi khung hình trên giây	don_vi	NHÁP: K hoa sau 2, 4, 8 là độ phân giải; fps
+*	100 Mbps	một trăm mê ga bít trên giây	don_vi	NHÁP: Mbps
+*	1 Gbps	một gi ga bít trên giây	don_vi	NHÁP: Gbps
+*	6,7 inch	sáu phẩy bảy inh	don_vi	NHÁP: inch đọc inh
+bac	5000mAh	năm nghìn mi li am pe giờ	don_vi	NHÁP: mAh
+nam	5000mAh	năm ngàn mi li am pe giờ	don_vi	NHÁP: mAh
+bac	1.000 km	một nghìn ki lô mét	don_vi	số lớn + đơn vị
+nam	1.000 km	một ngàn ki lô mét	don_vi	số lớn + đơn vị
+*	TP.HCM	thành phố hồ chí minh	viet_tat	viết tắt trong abbreviations.tsv
+*	TP. HCM	thành phố hồ chí minh	viet_tat	biến thể có dấu cách
+*	TPHCM	thành phố hồ chí minh	viet_tat	biến thể viết liền
+*	TP Hà Nội	thành phố hà nội	viet_tat	TP đứng riêng
+*	UBND tỉnh	uỷ ban nhân dân tỉnh	viet_tat	UBND; bỏ dấu kiểu mới (uỷ)
+*	HĐND	hội đồng nhân dân	viet_tat	HĐND
+*	trường THPT	trường trung học phổ thông	viet_tat	THPT
+*	THCS	trung học cơ sở	viet_tat	THCS
+*	ĐH Quốc gia	đại học quốc gia	viet_tat	ĐH
+*	ĐHQG	đại học quốc gia	viet_tat	ĐHQG
+*	táo, cam, v.v.	táo, cam, vân vân	viet_tat	v.v. là vân vân (dấu chấm thuộc viết tắt)
+*	GS.TS Nguyễn Văn A	giáo sư tiến sĩ nguyễn văn a	viet_tat	GS.TS
+*	PGS	phó giáo sư	viet_tat	PGS
+*	ThS	thạc sĩ	viet_tat	ThS
+*	BHXH	bảo hiểm xã hội	viet_tat	BHXH
+*	VN	việt nam	viet_tat	VN
+*	CSGT	cảnh sát giao thông	viet_tat	CSGT
+*	TNHH	trách nhiệm hữu hạn	viet_tat	TNHH
+*	COVID-19	cô vít mười chín	viet_tat	NHÁP: COVID đọc cô vít
+*	HN	hà nội	viet_tat	HN
+*	TW	trung ương	viet_tat	TW
+*	Q.1, P.5	quận một, phường năm	viet_tat	NHÁP: Q. là quận, P. là phường (địa chỉ)
+*	TP.HN	thành phố hà nội	viet_tat	TP. dính viết tắt khác
+*	VTV	vê tê vê	chu_hoa	viết hoa không có trong dữ liệu: đánh vần tên chữ cái
+*	FPT	ép pê tê	chu_hoa	đánh vần
+*	kênh HTV7	kênh hát tê vê bảy	chu_hoa	chữ hoa + số
+*	4G	bốn giê	chu_hoa	số + chữ cái
+*	lớp 12A	lớp mười hai a	chu_hoa	A là âm tiết hợp lệ, đọc a
+*	điểm B	điểm bê	chu_hoa	một chữ cái không phải âm tiết: đọc tên chữ
+*	OK	ok	chu_hoa	chữ hoa có trong từ điển ngoại lệ G2P: không đánh vần
+*	Nhớ LIKE và SHARE nhé	nhớ like và share nhé	chu_hoa	chữ hoa có trong từ điển ngoại lệ: để G2P đọc
+*	VIDEO MỚI	video mới	chu_hoa	tiêu đề viết hoa có từ mượn trong từ điển ngoại lệ
+*	USB-C	u ét bê xê	chu_hoa	gạch nối giữa hai phần viết hoa: không ghép, đánh vần từng phần
+*	mp4	em mờ pê bốn	chu_hoa	chữ thường không có nguyên âm: đánh vần
+*	MP4	em mờ pê bốn	chu_hoa	chữ hoa không có nguyên âm: đánh vần
+*	vs	vê ét	chu_hoa	chữ thường không có nguyên âm: đánh vần
+*	ABC	a bê xê	chu_hoa	đánh vần
+*	SJC	ét gi xê	chu_hoa	NHÁP: J đọc gi
+*	MC	em mờ xê	chu_hoa	NHÁP: M đọc em mờ
+*	XYZ	ích i dài dét	chu_hoa	NHÁP: Y đọc i dài, Z đọc dét (Nam có nơi đọc i cà rét)
+*	U23	u hai mươi ba	chu_hoa	chữ + số
+*	LG	e lờ giê	chu_hoa	NHÁP: L đọc e lờ
+*	QR	quy e rờ	chu_hoa	NHÁP: R đọc e rờ
+*	ĐHKHTN	đê hát ca hát tê en nờ	chu_hoa	không có nguyên âm: đánh vần dù dài
+*	HÀ NỘI	hà nội	chu_hoa	chữ hoa là âm tiết hợp lệ: không đánh vần
+*	TÔI YÊU VIỆT NAM	tôi yêu việt nam	chu_hoa	tiêu đề viết hoa
+*	thế kỷ XXI	thế kỷ hai mươi mốt	so_la_ma	số La Mã sau thế kỷ
+*	thế kỉ XX	thế kỉ hai mươi	so_la_ma	thế kỉ viết i
+*	Chương IV	chương bốn	so_la_ma	sau chương
+*	Đại hội XIII	đại hội mười ba	so_la_ma	sau đại hội
+*	lần thứ IV	lần thứ tư	so_la_ma	sau thứ đọc như số thứ tự
+*	quý III	quý ba	so_la_ma	NHÁP: quý III đọc quý ba
+*	phần II	phần hai	so_la_ma	sau phần
+*	Thế kỷ thứ XV	thế kỷ thứ mười lăm	so_la_ma	thứ + La Mã
+*	XXI	ích ích i	so_la_ma	không có từ ngữ cảnh: coi là chữ viết tắt, đánh vần
+*	ngày 1/2	ngày một tháng hai	mo_ho	trước có ngày: là ngày tháng
+*	1/2 số người	một phần hai số người	mo_ho	sau là số: phân số
+*	chiếm 1/2	chiếm một phần hai	mo_ho	trước là chiếm: phân số
+*	1/2	ngày một tháng hai	mo_ho	NHÁP: không có ngữ cảnh, ngày/tháng hợp lệ thì là ngày tháng
+*	45/100	bốn mươi lăm phần một trăm	mo_ho	không thể là ngày: phân số
+*	5/0	năm trên không	mo_ho	mẫu bằng 0: đọc trên
+*	điểm 10/10	điểm mười trên mười	mo_ho	trước là điểm: đọc trên
+*	10/10 điểm	mười trên mười điểm	mo_ho	sau là điểm: đọc trên
+*	10/10	ngày mười tháng mười	mo_ho	NHÁP: không có ngữ cảnh: ngày tháng
+*	3-4	ba đến bốn	mo_ho	gạch ngang mặc định là khoảng
+*	3-4 người	ba đến bốn người	mo_ho	khoảng
+*	tỉ số 3-4	tỉ số ba bốn	mo_ho	sau tỉ số: tỉ số trận đấu
+*	tỷ số 2-1	tỷ số hai một	mo_ho	tỷ số
+*	thắng 3-1	thắng ba một	mo_ho	sau thắng: tỉ số
+*	tỉ số 2:1	tỉ số hai một	mo_ho	hai chấm sau tỉ số: tỉ số
+*	2:1	hai một	mo_ho	NHÁP: hai chấm không phải giờ hợp lệ: đọc như tỉ số
+bac	giai đoạn 1900-2000	giai đoạn một nghìn chín trăm đến hai nghìn	mo_ho	1900-xxxx là khoảng năm, không phải tổng đài
+nam	giai đoạn 1900-2000	giai đoạn một ngàn chín trăm đến hai ngàn	mo_ho	1900-xxxx là khoảng năm, không phải tổng đài
+bac	1800-1900	một nghìn tám trăm đến một nghìn chín trăm	mo_ho	khoảng năm
+nam	1800-1900	một ngàn tám trăm đến một ngàn chín trăm	mo_ho	khoảng năm
+bac	2020-2025	hai nghìn không trăm hai mươi đến hai nghìn không trăm hai mươi lăm	mo_ho	khoảng năm
+nam	2020-2025	hai ngàn không trăm hai mươi đến hai ngàn không trăm hai mươi lăm	mo_ho	khoảng năm
+*	vietvoice.vn	vietvoice chấm vê en	url_email	tên miền: chấm, đuôi vn đánh vần
+*	https://www.google.com	vê kép vê kép vê kép chấm google chấm com	url_email	bỏ https://, www đánh vần
+*	rin@gmail.com	rin a còng gmail chấm com	url_email	NHÁP: @ đọc a còng (Nam có nơi đọc a móc)
+*	nguyen.van.a@abc.com.vn	nguyen chấm van chấm a a còng abc chấm com chấm vê en	url_email	email nhiều dấu chấm
+*	abc123@yahoo.com	abc một hai ba a còng yahoo chấm com	url_email	số trong email đọc từng chữ số
+*	Truy cập vtv.vn/tin-tuc nhé.	truy cập vê tê vê chấm vê en gạch chéo tin gạch ngang tuc nhé.	url_email	NHÁP: / đọc gạch chéo, - đọc gạch ngang; vtv không nguyên âm: đánh vần
+*	x.vn	ích chấm vê en	url_email	chữ cái đơn trong URL: đánh vần
+*	a@b.vn	a a còng bê chấm vê en	url_email	chữ cái đơn trong email: đánh vần (a là âm tiết)
+*	info_2027@vietvoice.vn	info gạch dưới hai không hai bảy a còng vietvoice chấm vê en	url_email	_ đọc gạch dưới
+*	TikTok	tiktok	ngoai_lai	từ Latin giữ nguyên, viết thường; G2P tra từ điển ngoại lệ
+*	video TikTok	video tiktok	ngoai_lai	từ Latin
+*	Facebook	facebook	ngoai_lai	từ Latin
+*	iPhone 15	iphone mười lăm	ngoai_lai	từ Latin + số
+*	YouTube	youtube	ngoai_lai	từ Latin
+*	VIETNAM	vietnam	ngoai_lai	chữ hoa dài có nguyên âm: không đánh vần
+*	e-mail	email	ngoai_lai	gạch nối giữa hai phần Latin: ghép thành một từ để tra từ điển ngoại lệ
+*	Wi-Fi	wifi	ngoai_lai	ghép Wi-Fi thành wifi
+*	top 5 K-pop	top năm kpop	ngoai_lai	K trước gạch nối không phải đơn vị; ghép kpop
+bac	2023 V-League	hai nghìn không trăm hai mươi ba vleague	ngoai_lai	V trước gạch nối không phải vôn; ghép vleague
+nam	2023 V-League	hai ngàn không trăm hai mươi ba vleague	ngoai_lai	V trước gạch nối không phải vôn; ghép vleague
+*	vitamin B	vitamin bê	ngoai_lai	chữ cái đơn đánh vần
+*	#VietVoice	vietvoice	ngoai_lai	bỏ dấu #
+*	café	cafe	ngoai_lai	không phải âm tiết, không có trong từ điển: bỏ dấu để G2P tra từ Latin
+*	naïve	naive	ngoai_lai	dấu lạ (ï) bỏ, giữ chữ gốc
+*	Tuyệt vời 😀	tuyệt vời	ky_hieu	bỏ emoji
+*	❤️ yêu	yêu	ky_hieu	bỏ emoji và ký tự biến thể
+*	Mẹ & con	mẹ và con	ky_hieu	& đọc và
+*	1 + 1 = 2	một cộng một bằng hai	ky_hieu	+ đọc cộng, = đọc bằng
+*	★★★ tốt	tốt	ky_hieu	bỏ ký hiệu lạ
+*	(chú thích)	chú thích	ky_hieu	bỏ ngoặc
+*	« xin chào »	xin chào	ky_hieu	bỏ ngoặc kép
+*	"Xin chào"	xin chào	ky_hieu	bỏ dấu nháy
+*	#tết	tết	ky_hieu	bỏ dấu #
+*	😀	-	ky_hieu	chỉ có emoji: chuỗi rỗng
+*	!!!	-	ky_hieu	dấu câu đứng đầu bị bỏ
+*	Привет мир	-	ky_hieu	chữ không phải Latin bị bỏ
+*	中文 xin chào	xin chào	ky_hieu	chữ Hán bị bỏ
+*	Xin chào; tạm biệt	xin chào, tạm biệt	dau_cau	; thành ,
+*	Lưu ý: mang áo	lưu ý, mang áo	dau_cau	: thành ,
+*	Chờ đã...	chờ đã.	dau_cau	ba chấm thành một chấm
+*	Xin chào… bạn	xin chào. bạn	dau_cau	… thành .
+*	Thật sao?!	thật sao?	dau_cau	nhiều dấu liền: giữ dấu mạnh nhất (? > ! > . > ,)
+*	Ôi!!!	ôi!	dau_cau	dấu lặp
+*	Hà Nội - Hải Phòng	hà nội, hải phòng	dau_cau	gạch có dấu cách hai bên thành ,
+*	Tây-Nam	tây nam	dau_cau	gạch nối thành dấu cách
+*	Đi đâu ?	đi đâu?	dau_cau	dấu câu dính vào từ trước
+*	cam , táo	cam, táo	dau_cau	bỏ dấu cách trước dấu phẩy
+*	Dòng một\nDòng hai	dòng một. dòng hai	dau_cau	xuống dòng thành dấu chấm
+*	Xin chào.\nBạn khoẻ không	xin chào. bạn khoẻ không	dau_cau	xuống dòng sau dấu chấm không thêm dấu
+*	  nhiều   khoảng   trắng  	nhiều khoảng trắng	dau_cau	gộp khoảng trắng
+*	Câu một.Câu hai	câu một. câu hai	dau_cau	thêm dấu cách sau dấu câu
+*	hòa bình	hoà bình	unicode	tone_style new: dấu trên âm chính (hoà)
+*	thủy điện	thuỷ điện	unicode	tone_style new: thuỷ
+*	khỏe	khoẻ	unicode	tone_style new: khoẻ
+*	Ủy ban	uỷ ban	unicode	tone_style new: uỷ
+*	quý	quý	unicode	qu không đổi
+*	hoàn thành	hoàn thành	unicode	có âm cuối: hai kiểu như nhau
+*	của	của	unicode	ua không đổi
+*	Ðà Nẵng	đà nẵng	unicode	Ð (eth, U+00D0) gõ nhầm thành Đ
+*	xin chào	xin chào	unicode	dấu cách không ngắt thành dấu cách thường
+bac	Ngày 15/1/2027, TP.HCM có 2.500 người tham gia, tăng 15%.	ngày mười lăm tháng một năm hai nghìn không trăm hai mươi bảy, thành phố hồ chí minh có hai nghìn năm trăm người tham gia, tăng mười lăm phần trăm.	hon_hop	câu tin tức
+nam	Ngày 15/1/2027, TP.HCM có 2.500 người tham gia, tăng 15%.	ngày mười lăm tháng một năm hai ngàn không trăm hai mươi bảy, thành phố hồ chí minh có hai ngàn năm trăm người tham gia, tăng mười lăm phần trăm.	hon_hop	câu tin tức
+bac	Giá 105k một ly	giá một trăm linh năm nghìn một ly	hon_hop	linh + nghìn
+nam	Giá 105k một ly	giá một trăm lẻ năm ngàn một ly	hon_hop	lẻ + ngàn
+bac	Phòng 105 tầng 3	phòng một trăm linh năm tầng ba	hon_hop	linh
+nam	Phòng 105 tầng 3	phòng một trăm lẻ năm tầng ba	hon_hop	lẻ
+*	Lúc 8h30 sáng 2/9, UBND phường tổ chức lễ.	lúc tám giờ ba mươi phút sáng ngày hai tháng chín, uỷ ban nhân dân phường tổ chức lễ.	hon_hop	giờ + ngày + viết tắt
+bac	Quãng đường 1.005 km	quãng đường một nghìn không trăm linh năm ki lô mét	hon_hop	số lớn + đơn vị
+nam	Quãng đường 1.005 km	quãng đường một ngàn không trăm lẻ năm ki lô mét	hon_hop	số lớn + đơn vị
+*	Nhiệt độ 25-30°C	nhiệt độ hai mươi lăm đến ba mươi độ xê	hon_hop	khoảng nhiệt độ
+*	Tiếng Việt	tiếng việt	unicode	đầu vào NFD được đưa về NFC

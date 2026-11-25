@@ -1,0 +1,86 @@
+# Cấu hình chuẩn hoá văn bản (P1). Chủ dự án sửa ở đây, không sửa code text/normalize.py.
+# Dòng có "NHÁP" là Claude điền tạm, chờ chủ dự án duyệt.
+# Từ trong các danh sách ngữ cảnh viết thường; kiểu bỏ dấu (hoà/hòa) không quan trọng.
+
+# Kiểu bỏ dấu ở đầu ra cho vần mở oa, oe, uy:
+#   new: hoà, khoẻ, thuỷ (dấu trên âm chính, như sách giáo khoa và phần lớn tài liệu dự án)
+#   old: hòa, khỏe, thủy
+tone_style: new                 # NHÁP
+
+ambiguity:
+  # true: normalize() nhận AmbiguityResolver (ví dụ LLM) để chọn cách đọc ca mơ hồ.
+  # false: chỉ dùng luật dưới đây; truyền resolver vào sẽ báo lỗi.
+  use_resolver: false
+
+numbers:
+  max_digits: 15                # số nguyên dài hơn đọc từng chữ số (15 chữ số = trăm nghìn tỷ)
+  max_leading_zero_digits: 2    # "05" đọc năm; "007" (dài hơn) đọc từng chữ số
+  max_fraction_digits: 3        # "3,14" đọc ba phẩy mười bốn; dài hơn đọc từng chữ số
+  max_spell_letters: 5          # chữ hoa không phải âm tiết, tối đa bấy nhiêu chữ thì đánh vần (VTV, ABC)
+
+phone:
+  # Số điện thoại viết liền (không có dấu cách/chấm/gạch) chia nhóm theo độ dài.
+  groups:
+    9: [3, 3, 3]                # sau +84
+    10: [4, 3, 3]               # di động 09xx xxx xxx
+    11: [3, 4, 4]               # máy bàn 028 xxxx xxxx
+  group_separator: ","          # dấu ngắt giữa các nhóm khi đọc
+
+time:
+  max_hour: 24                  # a:b chỉ là giờ khi a <= max_hour và b có 2 chữ số <= 59
+
+# Từ đứng TRƯỚC (hoặc SAU) quyết định cách đọc. Cụm nhiều từ được phép ("tỉ số").
+context:
+  ordinal: [thứ]                # thứ 1 -> thứ nhất, thứ 4 -> thứ tư
+  month: [tháng]                # tháng 4 -> tháng tư; tháng 1/2027 không nhắc lại "tháng"
+  roman: [thế kỷ, thế kỉ, chương, phần, đại hội, khoá, quý, tập, kỳ, kì, thứ, mục, hạng]
+  decimal_scale_after: [nghìn, ngàn, triệu, tỷ, tỉ, trăm]   # 2.5 triệu -> hai phẩy năm triệu
+  # Ca mơ hồ a/b, a-b, a:b (xem phần "Ca mơ hồ" trong docstring của normalize.py).
+  date_before: [ngày, hôm, mùng, mồng, sáng, trưa, chiều, tối, đêm, rạng sáng, từ, đến]   # NHÁP
+  date_no_prefix: [ngày, hôm, mùng, mồng]                  # sau các từ này không thêm chữ "ngày"
+  ratio_before: [điểm, đạt, chấm]                          # điểm 10/10 -> mười trên mười
+  ratio_after: [điểm]
+  fraction_before: [chiếm, giảm, tăng, khoảng, gần, hơn, còn, bằng, được]   # NHÁP
+  fraction_after: [số, dân, diện, lượng, tổng, phần]       # NHÁP
+  score_before: [tỉ số, tỷ số, thắng, thua, hoà, cách biệt, tỉ lệ, tỷ lệ]   # NHÁP
+  currency_before: [giá, chỉ, còn, mất, trả, bán, mua, phí, lương, tặng, giảm]   # NHÁP: 4K sau các từ này là tiền
+
+# Dấu câu khác , . ? ! đổi thành dấu nào. Ký tự không có ở đây và không có trong symbols.tsv bị bỏ.
+punctuation:
+  ";": ","
+  ":": ","
+  "…": "."
+  "—": ","
+  "–": ","
+  " - ": ","                     # gạch có dấu cách hai bên (Hà Nội - Hải Phòng); gạch nối e-mail thành dấu cách
+  "\n": "."                     # xuống dòng là hết câu
+# Gộp nhiều dấu liền nhau: giữ dấu đứng trước trong danh sách này.
+punctuation_strength: ["?", "!", ".", ","]
+
+# Ký tự gõ nhầm -> ký tự đúng, áp trước mọi bước khác.
+char_map:
+  "Ð": "Đ"                      # U+00D0 (eth) hay bị gõ thay cho Đ
+  "ð": "đ"
+
+# Đơn vị một chữ cái dễ nhầm với chữ cái đứng riêng: chỉ nhận khi viết liền số (2V, 5h).
+# "đội 2 V" đọc chữ V; đơn vị khác (m, g, l, đ, %, km) được cách một dấu cách.
+unit_glued: [h, p, s, V, W, k, K]
+
+# Độ phân giải video: K hoa ngay sau các số này đọc tên chữ (4K -> bốn ca), trừ khi từ trước
+# thuộc context.currency_before (giá 4K -> bốn nghìn). k thường luôn là nghìn.
+resolution:                     # NHÁP
+  unit: K
+  numbers: [2, 4, 8]
+
+# Số viết gọn kiểu 1tr5, 2k5: chữ ở giữa nhân với hệ số, chữ số sau là các chữ số đầu của phần lẻ
+# (1tr5 = 1.500.000, 2tr35 = 2.350.000, 2k5 = 2.500). Đọc đủ: một triệu năm trăm nghìn.
+compact_amount:                 # NHÁP
+  tr: 1000000
+  k: 1000
+  K: 1000
+
+# Ký hiệu tiền tệ được đứng TRƯỚC số ($50). Cách đọc lấy ở units.tsv.
+currency_prefix: ["$", "€", "£", "¥"]
+
+url:
+  tlds: [com, vn, net, org, edu, gov, io, info, me, co, app, dev]   # đuôi tên miền nhận ra khi không có http://

@@ -1,0 +1,11 @@
+# Ngưỡng đạt của checkpoint (đặc tả mục 1 và 10; tốc độ nói theo P8).
+# Mỗi chỉ số có đúng một phép so sánh:
+#   max: điểm ≤ ngưỡng · min: điểm ≥ ngưỡng · abs_max: |điểm| ≤ ngưỡng
+# Đây là mục tiêu đề xuất, sẽ hiệu chỉnh sau khi đo baseline.
+
+cer: {max: 0.03}                  # tỉ lệ (0.03 = 3%), ASR trên audio tổng hợp
+ter: {max: 0.03}                  # tỉ lệ âm tiết sai thanh
+f0_rmse_st: {max: 2.0}            # semitone, sau DTW
+creak_gap_pts: {abs_max: 10.0}    # điểm %, tổng hợp trừ thật
+speaker_similarity: {min: 0.75}   # cosine embedding ECAPA-TDNN
+speech_rate_dev: {abs_max: 0.10}  # tỉ lệ lệch tốc độ nói so với bản thật

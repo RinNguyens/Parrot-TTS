@@ -1,0 +1,51 @@
+# Viết tắt -> cách đọc. Khớp đúng chữ hoa/thường, đứng riêng thành một từ (TP.HCM, UBND, v.v.).
+# Chữ hoa không có ở đây thì đánh vần bằng letters.tsv (VTV -> vê tê vê).
+# Thêm viết tắt mới: thêm một dòng. Viết tắt có nhiều nghĩa (CP, ĐT) chỉ thêm khi chắc chắn.
+# Cột: dialect <tab> key <tab> reading
+# dialect: bac | nam | * (cả hai vùng). Dòng của vùng ghi đè dòng *.
+# reading: chữ thường tiếng Việt cách nhau một dấu cách (không số, không dấu câu).
+# Dòng có chữ NHÁP ở cột note là Claude điền tạm (giọng phát thanh phổ biến), cần chủ dự án duyệt.
+dialect	key	reading	note
+*	TP.HCM	thành phố hồ chí minh	
+*	TP. HCM	thành phố hồ chí minh	
+*	Tp.HCM	thành phố hồ chí minh	
+*	Tp. HCM	thành phố hồ chí minh	
+*	TPHCM	thành phố hồ chí minh	
+*	TP.	thành phố	
+*	Tp.	thành phố	
+*	TP	thành phố	
+*	HCM	hồ chí minh	
+*	Q.	quận	NHÁP: Q.1 trong địa chỉ
+*	P.	phường	NHÁP: P.5 trong địa chỉ
+*	HN	hà nội	
+*	VN	việt nam	
+*	UBND	uỷ ban nhân dân	
+*	HĐND	hội đồng nhân dân	
+*	MTTQ	mặt trận tổ quốc	
+*	TW	trung ương	
+*	BCH	ban chấp hành	
+*	THPT	trung học phổ thông	
+*	THCS	trung học cơ sở	
+*	ĐH	đại học	
+*	ĐHQG	đại học quốc gia	
+*	CĐ	cao đẳng	
+*	GS.TS	giáo sư tiến sĩ	
+*	PGS.TS	phó giáo sư tiến sĩ	
+*	GS	giáo sư	
+*	PGS	phó giáo sư	
+*	TS	tiến sĩ	
+*	ThS	thạc sĩ	
+*	BS	bác sĩ	
+*	BHXH	bảo hiểm xã hội	
+*	BHYT	bảo hiểm y tế	
+*	CSGT	cảnh sát giao thông	
+*	TNHH	trách nhiệm hữu hạn	
+*	NXB	nhà xuất bản	
+*	SĐT	số điện thoại	
+*	v.v.	vân vân	
+*	v.v	vân vân	
+*	COVID	cô vít	NHÁP
+*	TV	ti vi	NHÁP
+*	USD	đô la mỹ	NHÁP
+*	VND	việt nam đồng	NHÁP
+*	VNĐ	việt nam đồng	NHÁP
