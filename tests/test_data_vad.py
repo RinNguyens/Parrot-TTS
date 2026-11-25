@@ -1,6 +1,6 @@
 """Bước 3 pipeline: cắt câu ở khoảng lặng >= 300 ms, giữ 0,1–0,2 s lặng hai đầu.
 
-API: ``vietvoice.data.vad``: Protocol ``VoiceActivityDetector``, ``EnergyVAD``,
+API: ``parrot_tts.data.vad``: Protocol ``VoiceActivityDetector``, ``EnergyVAD``,
 ``segment_utterances``, ``cut_file``.
 """
 
@@ -9,7 +9,7 @@ import pytest
 import soundfile as sf
 from fixtures_audio import SR, noise, sha256, speech_like, write_wav
 
-from vietvoice.data.vad import (
+from parrot_tts.data.vad import (
     EnergyVAD,
     SpeechRegion,
     UtteranceCut,

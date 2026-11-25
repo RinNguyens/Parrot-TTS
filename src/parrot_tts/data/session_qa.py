@@ -20,7 +20,7 @@ Cách đo (mọi mức tính theo dBFS với full scale = 1,0, tức 20·log10(R
   là dấu hiệu gate, khử ồn hoặc mất tín hiệu và bị loại.
 - File ngắn hơn một khung thì không đo được và bị loại.
 
-Dòng lệnh: ``python -m vietvoice.data.session_qa <thư_mục_phiên> [--json out.json]``;
+Dòng lệnh: ``python -m parrot_tts.data.session_qa <thư_mục_phiên> [--json out.json]``;
 in bảng kết quả, trả mã thoát 1 nếu có file bị loại, 2 nếu sai tham số hoặc phiên rỗng.
 """
 
@@ -34,9 +34,9 @@ from pathlib import Path
 import numpy as np
 from numpy.typing import NDArray
 
-from vietvoice.data.config import LevelAnalysis, QAConfig, load_qa_config
-from vietvoice.data.frames import frame_power, power_db, read_float, run_lengths
-from vietvoice.data.ingest import check_format
+from parrot_tts.data.config import LevelAnalysis, QAConfig, load_qa_config
+from parrot_tts.data.frames import frame_power, power_db, read_float, run_lengths
+from parrot_tts.data.ingest import check_format
 
 __all__ = ["FileQA", "Levels", "SessionQA", "check_file", "load_qa_config", "main", "measure_levels", "run_session"]
 
@@ -189,7 +189,7 @@ def format_table(summary: SessionQA) -> str:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="python -m vietvoice.data.session_qa", description="QA một phiên thu âm.")
+    parser = argparse.ArgumentParser(prog="python -m parrot_tts.data.session_qa", description="QA một phiên thu âm.")
     parser.add_argument("session_dir", type=Path, help="thư mục chứa các file .wav của phiên")
     parser.add_argument("--json", type=Path, dest="json_out", help="ghi kết quả ra file JSON")
     args = parser.parse_args(argv)

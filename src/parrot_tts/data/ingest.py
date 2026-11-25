@@ -16,8 +16,8 @@ import numpy as np
 import soundfile as sf
 from numpy.typing import NDArray
 
-from vietvoice.data.config import IngestConfig, load_qa_config
-from vietvoice.data.frames import run_lengths
+from parrot_tts.data.config import IngestConfig, load_qa_config
+from parrot_tts.data.frames import run_lengths
 
 # Độ sâu bit của các kiểu PCM số nguyên; kiểu khác (FLOAT, DOUBLE...) đo clip theo |x| >= 1.0.
 _PCM_BITS = {"PCM_S8": 8, "PCM_U8": 8, "PCM_16": 16, "PCM_24": 24, "PCM_32": 32}

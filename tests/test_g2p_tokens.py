@@ -1,6 +1,6 @@
 """Chuỗi token đầu ra của G2P: định dạng ở doc đặc tả, mục 3.
 
-API cần có: ``vietvoice.text.g2p.g2p(text: str, dialect: str) -> list[str]``.
+API cần có: ``parrot_tts.text.g2p.g2p(text: str, dialect: str) -> list[str]``.
 - Mỗi âm tiết kết thúc bằng đúng một token thanh T1..T8.
 - ``_`` là ranh giới từ; dấu , . ? ! giữ nguyên thành token riêng.
 - ``ʔ`` đứng đầu âm tiết mở đầu bằng nguyên âm.
@@ -10,7 +10,7 @@ import re
 
 import pytest
 
-from vietvoice.text.g2p import g2p
+from parrot_tts.text.g2p import g2p
 
 TONE = re.compile(r"^T[1-8]$")
 DIALECTS = ["bac", "nam"]

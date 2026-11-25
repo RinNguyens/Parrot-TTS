@@ -1,6 +1,6 @@
 """Biểu đồ cho luận văn: đường hội tụ loss và cột đối chứng thực nghiệm.
 
-API: ``vietvoice.eval.plots``. Test kiểm tra nội dung hình (số trục, đường, ngưỡng, chiều cao cột),
+API: ``parrot_tts.eval.plots``. Test kiểm tra nội dung hình (số trục, đường, ngưỡng, chiều cao cột),
 không so ảnh từng điểm ảnh.
 """
 
@@ -12,8 +12,8 @@ import pandas as pd
 import pytest
 from matplotlib.figure import Figure
 
-from vietvoice.eval.metrics import METRICS, CheckpointScores, Threshold
-from vietvoice.eval.plots import (
+from parrot_tts.eval.metrics import METRICS, CheckpointScores, Threshold
+from parrot_tts.eval.plots import (
     ema,
     main,
     plot_experiment_comparison,

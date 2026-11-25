@@ -1,5 +1,5 @@
 [project]
-name = "vietvoice"
+name = "parrot-tts"
 version = "0.1.0"
 description = "Parrot-TTS: Vietnamese text-to-speech for Vietnamese speakers"
 authors = [
@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Để đọc trên máy mình (`vietvoice tts`): phần CosyVoice cần lúc suy luận, theo requirements.txt của CosyVoice ở commit
+# Để đọc trên máy mình (`parrot-tts tts`): phần CosyVoice cần lúc suy luận, theo requirements.txt của CosyVoice ở commit
 # đang dùng, bỏ phần train/phục vụ (deepspeed, tensorrt, gradio, grpc, tensorboard). torch 2.3.1 cần numpy 1.x.
 tts = [
     "torch==2.3.1",
@@ -49,7 +49,7 @@ tts = [
 ]
 
 [project.scripts]
-vietvoice = "vietvoice:main"
+parrot-tts = "parrot_tts:main"
 
 [build-system]
 requires = ["uv_build>=0.13.7,<0.14.0"]
@@ -83,7 +83,7 @@ target-version = "py312"
 select = ["E", "F", "W", "I", "UP", "B"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["vietvoice"]
+known-first-party = ["parrot_tts"]
 
 [tool.pyright]
 include = ["src", "tests"]

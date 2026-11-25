@@ -15,8 +15,8 @@ cần màn hình và không rò hình khi vẽ nhiều lần. Lưu bằng ``save
 
 Dòng lệnh::
 
-    python -m vietvoice.eval.plots loss log.csv -o loss.png -o loss.pdf [--smooth 0.6] [--log-y]
-    python -m vietvoice.eval.plots compare scores.csv -o compare.pdf [--metrics cer ter] [--order baseline E1]
+    python -m parrot_tts.eval.plots loss log.csv -o loss.png -o loss.pdf [--smooth 0.6] [--log-y]
+    python -m parrot_tts.eval.plots compare scores.csv -o compare.pdf [--metrics cer ter] [--order baseline E1]
 
 Đầu vào sai thì hàm ném ``ValueError``; dòng lệnh in lỗi và trả mã thoát 2.
 """
@@ -36,7 +36,7 @@ import seaborn as sns
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 
-from vietvoice.eval.metrics import METRICS, CheckpointScores, Threshold, load_thresholds
+from parrot_tts.eval.metrics import METRICS, CheckpointScores, Threshold, load_thresholds
 
 PALETTE = "colorblind"
 DPI = 300
@@ -301,7 +301,7 @@ def save_figure(fig: Figure, paths: Iterable[Path], *, dpi: int = DPI) -> list[P
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="python -m vietvoice.eval.plots", description="Vẽ biểu đồ cho luận văn.")
+    parser = argparse.ArgumentParser(prog="python -m parrot_tts.eval.plots", description="Vẽ biểu đồ cho luận văn.")
     sub = parser.add_subparsers(dest="command", required=True)
 
     loss = sub.add_parser("loss", help="đường hội tụ loss từ CSV dạng rộng")

@@ -1,8 +1,8 @@
 """Kiểm kịch bản thu âm bằng G2P (P2): mọi âm tiết phải phân tích được, liệt kê hết âm tiết lỗi.
 
-Chạy: ``python -m vietvoice.text.check_script data/scripts/<speaker_id>.tsv --dialect bac``.
+Chạy: ``python -m parrot_tts.text.check_script data/scripts/<speaker_id>.tsv --dialect bac``.
 File kịch bản mỗi dòng ``id <TAB> câu`` (đặc tả mục 5), câu đã chuẩn hoá; thêm ``--normalize``
-để chạy chuẩn hoá (``vietvoice.text.normalize``) trước. Mã thoát: 0 không lỗi, 1 có âm tiết
+để chạy chuẩn hoá (``parrot_tts.text.normalize``) trước. Mã thoát: 0 không lỗi, 1 có âm tiết
 lỗi, 2 file kịch bản hoặc cấu hình sai.
 """
 
@@ -12,8 +12,8 @@ from collections.abc import Callable, Iterable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 
-from vietvoice.text.g2p import DIALECTS, PUNCTUATION, load_lexicon, split_text, word_tokens
-from vietvoice.text.normalize import normalize as normalize_text
+from parrot_tts.text.g2p import DIALECTS, PUNCTUATION, load_lexicon, split_text, word_tokens
+from parrot_tts.text.normalize import normalize as normalize_text
 
 Normalizer = Callable[[str, str], str]
 
@@ -100,7 +100,7 @@ def format_report(errors: Sequence[ScriptError], line_count: int, dialect: str) 
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="python -m vietvoice.text.check_script",
+        prog="python -m parrot_tts.text.check_script",
         description="Chạy G2P trên kịch bản thu âm, liệt kê mọi âm tiết không đọc được.",
     )
     parser.add_argument("script", type=Path, help="file kịch bản id<TAB>câu")

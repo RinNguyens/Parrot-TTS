@@ -3,7 +3,7 @@
 Mỗi dòng trong file TSV kiểm tra một trường của một âm tiết, nên chỉnh
 luật chỉ cần sửa file dữ liệu, không phải sửa code test.
 
-API cần có trong ``vietvoice.text.g2p``:
+API cần có trong ``parrot_tts.text.g2p``:
 - ``Syllable``: dataclass với các trường onset, glide, nucleus, coda (str, rỗng nếu không có),
   tone (int 1..8, đã áp luật vùng), glottal_onset (bool).
 - ``parse_syllable(word: str, dialect: str) -> Syllable``.
@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pytest
 
-from vietvoice.text.g2p import Syllable, parse_syllable
+from parrot_tts.text.g2p import Syllable, parse_syllable
 
 RULES_FILE = Path(__file__).parent / "data" / "g2p_rules.tsv"
 FIELDS = {"onset", "glide", "nucleus", "coda", "tone", "glottal_onset"}

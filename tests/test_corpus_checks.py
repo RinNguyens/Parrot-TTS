@@ -4,7 +4,7 @@ import dataclasses
 
 import pytest
 
-from vietvoice.corpus.checks import (
+from parrot_tts.corpus.checks import (
     Problem,
     check_duplicates,
     check_duration,
@@ -13,7 +13,7 @@ from vietvoice.corpus.checks import (
     normalize_for_compare,
     run_checks,
 )
-from vietvoice.corpus.coverage import Sentence, load_config
+from parrot_tts.corpus.coverage import Sentence, load_config
 
 
 def test_normalize_for_compare():

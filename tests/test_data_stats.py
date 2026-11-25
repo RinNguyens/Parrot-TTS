@@ -1,13 +1,13 @@
 """Bảng thống kê sau mỗi lần chạy: số câu pass / review / fail ở từng bước (review P5).
 
-API: ``vietvoice.data.stats.RunStats``.
+API: ``parrot_tts.data.stats.RunStats``.
 """
 
 import json
 
 import pytest
 
-from vietvoice.data.stats import RunStats
+from parrot_tts.data.stats import RunStats
 
 
 def test_counts_per_step_in_insertion_order():

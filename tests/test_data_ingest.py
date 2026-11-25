@@ -1,6 +1,6 @@
 """Bước 1 pipeline: kiểm tra định dạng (48 kHz, 24-bit PCM, mono, WAV) và clip.
 
-API: ``vietvoice.data.ingest.check_format(path, config=None) -> FormatCheck``.
+API: ``parrot_tts.data.ingest.check_format(path, config=None) -> FormatCheck``.
 """
 
 import numpy as np
@@ -8,7 +8,7 @@ import pytest
 import soundfile as sf
 from fixtures_audio import SR, good_take, sine, write_wav
 
-from vietvoice.data.ingest import FormatCheck, check_format, clipped_runs, load_ingest_config
+from parrot_tts.data.ingest import FormatCheck, check_format, clipped_runs, load_ingest_config
 
 
 def test_good_file_passes(tmp_path):

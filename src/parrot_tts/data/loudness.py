@@ -4,7 +4,7 @@ Chỉ nhân một hệ số gain, không nén, không limiter. Nếu gain cần 
 vượt ``qa.max_peak_dbfs`` thì ném ``PeakLimitError`` thay vì để clip: câu đó cần xem lại.
 Ghi ra WAV 24-bit, cùng tần số lấy mẫu. Thông số trong ``loudness.yaml`` và ``qa.yaml``.
 
-Dòng lệnh: ``python -m vietvoice.data.loudness <vào.wav> <ra.wav>``.
+Dòng lệnh: ``python -m parrot_tts.data.loudness <vào.wav> <ra.wav>``.
 """
 
 import argparse
@@ -19,8 +19,8 @@ import soundfile as sf
 from numpy.typing import NDArray
 from pydantic import Field
 
-from vietvoice.data.config import FrozenModel, load_qa_config, load_yaml_model
-from vietvoice.data.frames import read_float
+from parrot_tts.data.config import FrozenModel, load_qa_config, load_yaml_model
+from parrot_tts.data.frames import read_float
 
 
 class LoudnessConfig(FrozenModel):
@@ -101,7 +101,7 @@ def normalize_file(src: Path, dst: Path, config: LoudnessConfig | None = None) -
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="python -m vietvoice.data.loudness", description="Chuẩn hoá độ lớn.")
+    parser = argparse.ArgumentParser(prog="python -m parrot_tts.data.loudness", description="Chuẩn hoá độ lớn.")
     parser.add_argument("src", type=Path, help="file WAV vào")
     parser.add_argument("dst", type=Path, help="file WAV ra")
     args = parser.parse_args(argv)

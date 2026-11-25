@@ -4,8 +4,8 @@ import dataclasses
 
 import pytest
 
-from vietvoice.corpus.coverage import Sentence, count_sentence, load_config
-from vietvoice.corpus.select import (
+from parrot_tts.corpus.coverage import Sentence, count_sentence, load_config
+from parrot_tts.corpus.select import (
     StopReason,
     Unit,
     category_budget,

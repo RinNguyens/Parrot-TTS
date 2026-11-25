@@ -12,7 +12,7 @@ Hai lớp tách nhau:
 chỉ cần một lớp có ``detect(audio, sample_rate) -> list[SpeechRegion]`` là cắm vào thay
 ``EnergyVAD``, phần gộp và đệm giữ nguyên.
 
-Dòng lệnh: ``python -m vietvoice.data.vad <vào.wav> <thư_mục_ra>``.
+Dòng lệnh: ``python -m parrot_tts.data.vad <vào.wav> <thư_mục_ra>``.
 """
 
 import argparse
@@ -27,8 +27,8 @@ import soundfile as sf
 from numpy.typing import NDArray
 from pydantic import Field, model_validator
 
-from vietvoice.data.config import FrozenModel, load_yaml_model
-from vietvoice.data.frames import frame_power, power_db, read_float
+from parrot_tts.data.config import FrozenModel, load_yaml_model
+from parrot_tts.data.frames import frame_power, power_db, read_float
 
 
 class EnergyVADConfig(FrozenModel):
@@ -189,7 +189,7 @@ def cut_file(
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="python -m vietvoice.data.vad", description="Cắt file thu thành câu.")
+    parser = argparse.ArgumentParser(prog="python -m parrot_tts.data.vad", description="Cắt file thu thành câu.")
     parser.add_argument("src", type=Path, help="file WAV vào")
     parser.add_argument("out_dir", type=Path, help="thư mục ghi các câu đã cắt")
     args = parser.parse_args(argv)

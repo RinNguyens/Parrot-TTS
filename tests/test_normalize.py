@@ -3,7 +3,7 @@
 Mỗi dòng TSV là một câu vào và đầu ra mong đợi, nên chỉnh cách đọc chỉ cần sửa file dữ liệu
 (``tests/data/normalize_cases.tsv`` cho ca kiểm tra, ``normalize_data/`` cho luật).
 
-API cần có trong ``vietvoice.text.normalize``:
+API cần có trong ``parrot_tts.text.normalize``:
 - ``normalize(text, dialect, *, resolver=None, data=None) -> str``: chữ thường NFC, cách nhau
   một dấu cách, chỉ giữ dấu câu ``, . ? !``. Vùng lạ -> ``ValueError``.
 - ``load_data(data_dir=DATA_DIR) -> NormalizeData``: đọc và kiểm tra file dữ liệu, lỗi -> ``ValueError``.
@@ -23,8 +23,8 @@ import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
-from vietvoice.text.g2p import g2p, load_lexicon, split_text, word_tokens
-from vietvoice.text.normalize import (
+from parrot_tts.text.g2p import g2p, load_lexicon, split_text, word_tokens
+from parrot_tts.text.normalize import (
     DATA_DIR,
     AmbiguityResolver,
     AmbiguousSpan,
@@ -337,7 +337,7 @@ def assert_g2p_readable(out: str, dialect: str) -> None:
 
 REALISTIC = (
     "Sáng 15/1/2027, UBND TP.HCM tổ chức hội nghị tại số 86 Lê Thánh Tôn; có 2.500 đại biểu tham dự. "
-    "Giá vé từ 50k đến 1,5 triệu đồng, tăng 15% so với năm 2026. Liên hệ 0912 345 678 hoặc info@vietvoice.vn. "
+    "Giá vé từ 50k đến 1,5 triệu đồng, tăng 15% so với năm 2026. Liên hệ 0912 345 678 hoặc info@parrot.vn. "
     "Nhiệt độ 25-30°C, gió 20km/h. Đội nhà thắng tỉ số 3-1 lúc 21h15 😀 v.v. Video TikTok đạt 10/10 điểm! "
     "Thế kỷ XXI, lần thứ 4, phòng 105, diện tích 120m², 1/2 số người đồng ý. "
 )

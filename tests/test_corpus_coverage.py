@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from vietvoice.corpus.coverage import (
+from parrot_tts.corpus.coverage import (
     count_sentence,
     load_config,
     measure,
@@ -17,7 +17,7 @@ from vietvoice.corpus.coverage import (
     valid_tone_pairs,
     valid_tones,
 )
-from vietvoice.text.g2p import g2p
+from parrot_tts.text.g2p import g2p
 
 SENTENCE = "ăn cơm, ăn cá."  # Bắc: ʔ a n T1 _ k ə m T1 , ʔ a n T1 _ k a T5 .
 
@@ -184,7 +184,7 @@ def test_default_config_values():
 
 
 def test_config_quotas_must_sum_to_one(tmp_path: Path):
-    raw = (Path(__file__).parents[1] / "src/vietvoice/corpus/config.yaml").read_text(encoding="utf-8")
+    raw = (Path(__file__).parents[1] / "src/parrot_tts/corpus/config.yaml").read_text(encoding="utf-8")
     bad = tmp_path / "config.yaml"
     bad.write_text(raw.replace("phu_am_vi: 0.30", "phu_am_vi: 0.50"), encoding="utf-8")
     with pytest.raises(ValueError, match="tổng"):

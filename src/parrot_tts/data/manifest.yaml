@@ -9,7 +9,7 @@ max_asr_cer: 0.05                           # CER > 5% thì không được pass
 # Ngưỡng SNR cho câu pass lấy từ qa.yaml (qa.min_snr_db), không ghi lại ở đây.
 # Giấy phép được phép nằm trong tập train (không bao giờ train trên dữ liệu không thương mại).
 train_licenses:
-  - vietvoice-commercial-v1
+  - parrot-tts-commercial-v1
 split:
   train: 0.94
   val: 0.03

@@ -1,6 +1,6 @@
 """Bước 2 pipeline: đo loudness ITU-R BS.1770 (pyloudnorm) và đưa về -23 LUFS.
 
-API: ``vietvoice.data.loudness``: ``measure_loudness``, ``normalize``, ``normalize_file``, ``PeakLimitError``.
+API: ``parrot_tts.data.loudness``: ``measure_loudness``, ``normalize``, ``normalize_file``, ``PeakLimitError``.
 """
 
 import numpy as np
@@ -9,7 +9,7 @@ import pytest
 import soundfile as sf
 from fixtures_audio import SR, noise, sha256, speech_like, write_wav
 
-from vietvoice.data.loudness import (
+from parrot_tts.data.loudness import (
     PeakLimitError,
     load_loudness_config,
     main,
